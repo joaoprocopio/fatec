@@ -1,14 +1,12 @@
-const formattedPrint = (text: string, value: unknown): void => {
-  console.log(`${text} ${value}`)
-}
-
 type TOperacao = (a: number, b: number) => number
-const soma: TOperacao = (a, b) => a + b
+type TCallback = (f: TOperacao, a: number, b: number) => number
+
+const callback: TCallback = (f, a, b) => f(a, b)
 
 const dif: TOperacao = (a, b) => a - b
+const div: TOperacao = (a, b) => a / b
+const pot: TOperacao = (a, b) => a ** b
 
-const minus = dif
-
-formattedPrint("Soma: ", soma(2, 3))
-formattedPrint("Dif: ", dif(2, 3))
-formattedPrint("Minus: ", minus(2, 3))
+console.log("Dif: ", callback(dif, 2, 3))
+console.log("Div: ", callback(div, 2, 3))
+console.log("Pot: ", callback(pot, 2, 3))
