@@ -1,13 +1,14 @@
-const sum = (a: number, b: number): number => {
-  return a + b
+const formattedPrint = (text: string, value: unknown): void => {
+  console.log(`${text} ${value}`)
 }
 
-const sub = (a: number, b: number): number => {
-  return a - b
-}
+type TOperacao = (a: number, b: number) => number
+const soma: TOperacao = (a, b) => a + b
 
-let result = sum(1, 2)
-console.log(result)
+const dif: TOperacao = (a, b) => a - b
 
-result = sub(5, 4)
-console.log(result)
+const minus = dif
+
+formattedPrint("Soma: ", soma(2, 3))
+formattedPrint("Dif: ", dif(2, 3))
+formattedPrint("Minus: ", minus(2, 3))
