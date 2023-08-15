@@ -1,4 +1,4 @@
-const operar = (v1: number[], v2: string[]) => {
+const operar = function (v1: number[], v2: string[]) {
   const res = []
 
   for (let i = 0; i < v1.length; i++) {
@@ -8,7 +8,7 @@ const operar = (v1: number[], v2: string[]) => {
   return res
 }
 
-const v1 = [5, 3, 1, 8, 2]
-const v2 = ["M", "a", "r", "i", "a"]
+const vetor1 = [5, 3, 1, 8, 2]
+const vetor2 = ["M", "a", "r", "i", "a"]
 
-console.log("Resultado: ", operar(v1, v2))
+console.log("Resultado: ", operar(vetor1, vetor2))
