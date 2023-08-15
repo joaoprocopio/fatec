@@ -1,13 +1,14 @@
 function item(entrada: string): string {
-  return `\t<li>${entrada}</li>\n`
+  return `\t<li>${entrada}</li>`
 }
-function list(elementos: string[]): string {
-  const soma = elementos.reduce((prev, next) => prev + item(next), "")
 
-  return `<ul>\n${soma}\n</ul>\n`
+function list(items: string[]): string {
+  const sum = items.map((it) => item(it))
+
+  return `<ul>\n${sum.join(`\n`)}\n</ul>\n`
 }
 const frutas = ["Manga", "Laranja", "Maça", "Uva"]
 
-const resultado = list(frutas)
+const resultadoR = list(frutas)
 
-console.log(resultado)
+console.log(resultadoR)
