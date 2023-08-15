@@ -1,4 +1,4 @@
-const converter = <T>(vet: Array<T>) => {
+const converter = <T>(vet: T[]) => {
   const res = []
 
   for (let i = 0; i < vet.length; i++) {
