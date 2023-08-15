@@ -21,5 +21,8 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module"
   },
+  rules: {
+    "@typescript-eslint/no-unused-vars": "off"
+  },
   plugins: ["@typescript-eslint"]
 }
