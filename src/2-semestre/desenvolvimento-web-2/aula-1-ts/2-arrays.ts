@@ -1,6 +1,10 @@
-const nomes: Array<string> = ["Ana", "Carlos", "Débora", "Lucas"]
+const nomes: string[] = ["Ana", "Carlos", "Débora", "Lucas"]
 
 nomes.forEach((nome) => console.log(nome))
+
+const carros: string[] = ["Uno", "Gol", "Corsa"]
+
+console.log([...carros, ...nomes])
 
 const numbers: number[] = [1, 2, 3, 4, 5]
 const double = numbers.map((numero) => numero * 2)
