@@ -23,5 +23,5 @@ class Retangulo {
 
 const retangulo = new Retangulo(3, 2)
 
-retangulo.print()
+// retangulo.print()
 
