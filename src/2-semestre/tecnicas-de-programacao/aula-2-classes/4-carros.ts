@@ -1,5 +1,5 @@
 class Carro {
-  marca: string;
+  marca: string = "";
   modelo: string;
 
   constructor(marca: string, modelo: string) {
@@ -18,7 +18,10 @@ class Carro {
   }
 }
 
-const gol = new Carro("VW", "Gol")
+const gol = new Carro()
+
+gol.marca = "vw"
+gol.modelo = "gol"
 const uno = new Carro("Fiat", "Uno")
 
 gol.print()
