@@ -22,8 +22,8 @@ CREATE TABLE tbl_titulo (
 
 CREATE TABLE tbl_emprestimo (
   numero_emprestimo SERIAL PRIMARY KEY,
-  codigo_cliente TEXT,
-  codigo_livro TEXT
+  codigo_cliente INT,
+  codigo_livro INT
 );
 
 CREATE TABLE tbl_livros (
@@ -31,3 +31,9 @@ CREATE TABLE tbl_livros (
   codigo_titulo INT,
   status TEXT
 );
+
+-- Cria as constraints
+ALTER TABLE tbl_emprestimo
+ADD CONSTRAINT fk_cliente
+FOREIGN KEY (codigo_cliente)
+REFERENCES tbl_cliente(codigo_cliente);
