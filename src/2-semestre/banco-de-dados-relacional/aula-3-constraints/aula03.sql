@@ -48,8 +48,9 @@ ADD CONSTRAINT fk_titulo
 FOREIGN KEY (codigo_titulo)
 REFERENCES tbl_titulo(codigo_titulo);
 
--- Cria os domínios
+-- Cria e atribui os domínios
 CREATE DOMAIN categorias AS TEXT
 CHECK (VALUE IN ('DRAMA', 'COMEDIA'));
 
-
+ALTER TABLE tbl_titulo
+ALTER COLUMN categoria SET DATA TYPE categorias;
