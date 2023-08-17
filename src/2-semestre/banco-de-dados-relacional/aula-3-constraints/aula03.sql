@@ -1,8 +1,11 @@
+-- Cria o banco
 DROP DATABASE IF EXISTS aula_03_db;
 CREATE DATABASE aula_03_db;
 
+-- Conecta no banco
 \c aula_03_db;
 
+-- Cria as tabelas
 CREATE TABLE tbl_cliente (
   codigo_cliente SERIAL PRIMARY KEY,
   nome TEXT NOT NULL,
