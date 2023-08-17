@@ -42,3 +42,8 @@ ALTER TABLE tbl_emprestimo
 ADD CONSTRAINT fk_livro
 FOREIGN KEY (codigo_livro)
 REFERENCES tbl_livros(cod_livro);
+
+ALTER TABLE tbl_livros
+ADD CONSTRAINT fk_titulo
+FOREIGN KEY (codigo_titulo)
+REFERENCES tbl_titulo(codigo_titulo);
