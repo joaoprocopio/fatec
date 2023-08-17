@@ -5,18 +5,26 @@ CREATE DATABASE aula_03_db;
 
 CREATE TABLE tbl_cliente (
   codigo_cliente SERIAL PRIMARY KEY,
-  nome VARCHAR(128) NOT NULL,
-  cidade VARCHAR(64),
-  endereco VARCHAR(256)
+  nome TEXT NOT NULL,
+  cidade TEXT,
+  endereco TEXT
 );
 
-CREATE TABLE tbl_titulo {
+CREATE TABLE tbl_titulo (
   codigo_titulo SERIAL PRIMARY KEY,
-  titulo VARCHAR(128) NOT NULL,
-  descricao VARCHAR(512),
-  categoria VARCHAR(32)
-};
+  titulo TEXT NOT NULL,
+  descricao TEXT,
+  categoria TEXT
+);
 
-CREATE TABLE tbl_emprestimo {
+CREATE TABLE tbl_emprestimo (
   numero_emprestimo SERIAL PRIMARY KEY,
-}
+  codigo_cliente TEXT,
+  codigo_livro TEXT
+);
+
+CREATE TABLE tbl_livros (
+  cod_livro SERIAL PRIMARY KEY,
+  codigo_titulo INT,
+  status TEXT
+);
