@@ -49,8 +49,14 @@ FOREIGN KEY (codigo_titulo)
 REFERENCES tbl_titulo(codigo_titulo);
 
 -- Cria e atribui os domínios
-CREATE DOMAIN categorias AS TEXT
+CREATE DOMAIN titulo_categorias AS TEXT
 CHECK (VALUE IN ('DRAMA', 'COMEDIA'));
 
 ALTER TABLE tbl_titulo
-ALTER COLUMN categoria SET DATA TYPE categorias;
+ALTER COLUMN categoria SET DATA TYPE titulo_categorias;
+
+CREATE DOMAIN livro_status AS TEXT
+CHECK (VALUE IN ('DISPONIVEL', 'ALUGADO'));
+
+ALTER TABLE tbl_livros
+ALTER COLUMN status SET DATA TYPE livro_status;
