@@ -60,4 +60,7 @@ ALTER TABLE tbl_titulo
 ALTER COLUMN categoria SET DATA TYPE titulo_categorias;
 
 ALTER TABLE tbl_livros
-ALTER COLUMN status SET DATA TYPE livro_status; -- Gostaria de atribuir um valor DEFAULT='DISPONIVEL' para o campo mas o valor DEFAULT só pode ser atribuído na criação da tabela.
+ALTER COLUMN status SET DATA TYPE livro_status;
+
+ALTER TABLE tbl_livros
+ALTER COLUMN status SET DEFAULT 'DISPONIVEL';
