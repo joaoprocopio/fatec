@@ -10,13 +10,7 @@ class MyNumber {
   }
 
   sum(): number {
-    let s = 0
-
-    for (let i = 0; i < this.numbers.length; i++) {
-      s += this.numbers[i]
-    }
-
-    return s
+    return this.numbers.reduce((prev, next) => prev + next)
   }
 
   max() {
