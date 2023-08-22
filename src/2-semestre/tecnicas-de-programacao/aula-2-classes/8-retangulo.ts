@@ -15,9 +15,27 @@ class Ponto {
   }
 }
 
-const a = new Ponto(3, 5)
-const b = new Ponto(1, 2)
+class Retangulo {
+  iE: Ponto
+  sD: Ponto
 
-console.log("Distancia: ", a.distancia(b))
+  constructor(iE: Ponto, sD: Ponto) {
+    this.iE = iE
+    this.sD = sD
+  }
+
+  area() {
+    const x = iE.x - sD.x
+    const y = iE.y - sD.y
+
+    return y * x
+  }
+}
+
+const iE = new Ponto(1, 2)
+const sD = new Ponto(3, 5)
+const retangulo = new Retangulo(iE, sD)
+
+console.log("Area: ", retangulo.area())
 
 export {}
