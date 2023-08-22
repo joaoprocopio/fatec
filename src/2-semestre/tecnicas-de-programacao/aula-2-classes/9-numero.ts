@@ -5,21 +5,15 @@ class MyNumber {
     this.numbers = numbers
   }
 
-  add(number: number): void {
-    this.numbers.push(number)
-  }
-
   sum(): number {
     return this.numbers.reduce((prev, next) => prev + next)
   }
 
-  max() {
-    let max = this.numbers[0]
+  max(): number {
+    let max = Number.NEGATIVE_INFINITY
 
-    for (let i = 0; i < this.numbers.length; i++) {
-      if (this.numbers[i] > max) {
-        max = this.numbers[i]
-      }
+    for (const number of this.numbers) {
+      if (number > max) max = number
     }
 
     return max
