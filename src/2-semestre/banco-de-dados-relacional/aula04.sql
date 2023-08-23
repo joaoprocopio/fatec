@@ -52,3 +52,6 @@ FROM tbl_cliente;
 UPDATE tbl_livros
 SET status = 'ALUGADO'
 WHERE status = 'DISPONIVEL';
+
+DELETE FROM tbl_cliente2
+WHERE codigo > 3;
