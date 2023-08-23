@@ -32,3 +32,11 @@ INSERT INTO tbl_emprestimo (codigo_cliente, codigo_livro) VALUES
 (3, 1),
 (4, 5),
 (5, 3);
+
+SELECT * FROM tbl_cliente
+WHERE cidade = 'São Paulo';
+
+SELECT * FROM tbl_cliente
+WHERE codigo_cliente > 3;
+
+SELECT * FROM tbl_titulo;
