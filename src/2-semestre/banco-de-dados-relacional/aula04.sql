@@ -1,8 +1,6 @@
--- Cria o banco
 DROP DATABASE IF EXISTS bd_aula04;
 CREATE DATABASE bd_aula04 WITH TEMPLATE bd_aula03;
 
--- Conecta no banco
 \c bd_aula04;
 
 INSERT INTO tbl_cliente (nome, cidade, endereco) VALUES
