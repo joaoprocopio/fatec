@@ -40,3 +40,11 @@ SELECT * FROM tbl_cliente
 WHERE codigo_cliente > 3;
 
 SELECT * FROM tbl_titulo;
+
+CREATE TABLE tbl_cliente2 (
+  codigo INT
+);
+
+INSERT INTO tbl_cliente2 (codigo)
+SELECT codigo_cliente
+FROM tbl_cliente;
