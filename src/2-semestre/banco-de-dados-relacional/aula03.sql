@@ -1,9 +1,9 @@
 -- Cria o banco
-DROP DATABASE IF EXISTS aula_03_db;
-CREATE DATABASE aula_03_db;
+DROP DATABASE IF EXISTS bd_aula03;
+CREATE DATABASE bd_aula03;
 
 -- Conecta no banco
-\c aula_03_db;
+\c bd_aula03;
 
 -- Cria as tabelas
 CREATE TABLE tbl_cliente (
