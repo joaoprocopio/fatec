@@ -48,3 +48,7 @@ CREATE TABLE tbl_cliente2 (
 INSERT INTO tbl_cliente2 (codigo)
 SELECT codigo_cliente
 FROM tbl_cliente;
+
+UPDATE tbl_livros
+SET status = 'ALUGADO'
+WHERE status = 'DISPONIVEL';
