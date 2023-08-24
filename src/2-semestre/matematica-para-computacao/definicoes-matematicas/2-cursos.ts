@@ -5,3 +5,5 @@ enum CursosFatecJacarei {
   dsm = "Desenvolvimento de Software Multiplataforma",
   geo = "Geoprocessamento"
 }
+
+export {}

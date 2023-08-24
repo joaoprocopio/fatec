@@ -28,3 +28,5 @@ enum Family {
   son = "Josuke Higashikata",
   daughter = "Shizuka Joestar"
 }
+
+export {}

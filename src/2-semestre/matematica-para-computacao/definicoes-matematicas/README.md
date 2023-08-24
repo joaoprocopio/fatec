@@ -1,7 +1,5 @@
 # DEFINIÇÕES MATEMÁTICAS
 
-### 4. Efetue uma definição ostensiva, de um colega de classe.
-
 ### 5. Efetue uma definição recursiva de uma sequência numérica cujos elementos são obtidos multiplicando-se, a partir do segundo elemento, o elemento anterior por 3. Considere que o primeiro elemento vale 2.
 
 ### 6. Utilizando linguagem de programação defina:
