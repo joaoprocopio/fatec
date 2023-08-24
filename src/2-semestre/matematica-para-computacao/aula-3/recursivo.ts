@@ -7,3 +7,5 @@ const sequence = (n: number): number => {
 }
 
 console.log(sequence(8))
+
+export {}
