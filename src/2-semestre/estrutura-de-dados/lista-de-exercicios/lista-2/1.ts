@@ -20,3 +20,5 @@ const numbers = randomRange(5)
 
 console.log(numbers)
 console.log(smallest(numbers))
+
+export {}
