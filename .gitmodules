@@ -1,0 +1,3 @@
+[submodule "src/2-semestre/matematica-para-computacao/mathematics_for_computer_science"]
+	path = src/2-semestre/matematica-para-computacao/mathematics_for_computer_science
+	url = git@github.com:fabriciogmc/mathematics_for_computer_science.git
