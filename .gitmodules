@@ -1,3 +1,6 @@
 [submodule "src/2-semestre/matematica-para-computacao/mathematics_for_computer_science"]
 	path = src/2-semestre/matematica-para-computacao/mathematics_for_computer_science
 	url = git@github.com:fabriciogmc/mathematics_for_computer_science.git
+[submodule "src/2-semestre/estrutura-de-dados/algorithms_and_data_structures_ts"]
+	path = src/2-semestre/estrutura-de-dados/algorithms_and_data_structures_ts
+	url = git@github.com:fabriciogmc/algorithms_and_data_structures_ts.git
