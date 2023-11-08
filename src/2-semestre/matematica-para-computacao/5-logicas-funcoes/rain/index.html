@@ -2,16 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="/src/reset.css" />
     <link rel="stylesheet" href="/src/main.css" />
-    <script type="module" src="/src/main.ts" defer></script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script type="module" src="/src/main.ts" defer></script>
+
     <title>Raining</title>
   </head>
+
   <body>
     <canvas id="velocity_screen"></canvas>
+
     <button id="start_button">Start Simulation</button>
-    <div>Velocity mag (m/s): <input id="vel" /> Velocity angle (deg): <input id="angle" /></div>
+
+    <div>
+      <div><label>Velocity mag (m/s):</label> <input id="vel" /></div>
+      <div><label>Velocity angle (deg):</label> <input id="angle" /></div>
+    </div>
   </body>
 </html>
