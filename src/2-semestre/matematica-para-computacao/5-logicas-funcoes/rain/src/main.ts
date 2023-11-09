@@ -8,10 +8,10 @@ const context = rainingCanvasEl.getContext("2d") as CanvasRenderingContext2D
 const drawObject = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, center: number[], radius: number) => {
   const centerX = Math.floor(center[0])
   const centerY = Math.floor(center[1])
-  const r = radius
+
   context.clearRect(0, 0, canvas.width, canvas.height)
   context.beginPath()
-  context.arc(centerX, centerY, r, 0, 2 * Math.PI, false)
+  context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false)
   context.fillStyle = "white"
   context.fill()
 }
