@@ -16,26 +16,27 @@ const drawObject = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D
   context.fill()
 }
 
-const updateCoordinates = (coords: number[], v: number[], t: number) => {
-  coords[0] = Math.floor(coords[0] + v[0] * t)
-  coords[1] = Math.floor(coords[1] + v[1] * t)
+const updateCoordinates = (coords: number[], position: number[], t: number) => {
+  coords[0] = Math.floor(coords[0] + position[0] * t)
+  coords[1] = Math.floor(coords[1] + position[1] * t)
 }
 
 playButtonEl.onclick = () => {
   const velocity = parseFloat(velocityInputEl.value)
   const angle = parseFloat(angleInputEl.value)
   const center: number[] = [0, 0]
-  const v: number[] = [0, 0]
-  let t: number = 0 // initial time
-  const r: number = 10 //circle radius
-  const dt: number = 800 //time interval (ms)
-  v[0] = velocity * Math.cos((Math.PI * angle) / 180)
-  v[1] = velocity * Math.sin((Math.PI * angle) / 180)
+  const position: number[] = [0, 0]
+  let time: number = 0 // initial time
+  const radius: number = 10 // circle radius
+  const interval: number = 800 //time interval (ms)
+
+  position[0] = velocity * Math.cos((Math.PI * angle) / 180)
+  position[1] = velocity * Math.sin((Math.PI * angle) / 180)
 
   setInterval(() => {
-    // coordinate update
-    t = (t + dt) / dt
-    updateCoordinates(center, v, t)
-    drawObject(rainingCanvasEl, context, center, r)
-  }, dt)
+    time = (time + interval) / interval
+
+    updateCoordinates(center, position, time)
+    drawObject(rainingCanvasEl, context, center, radius)
+  }, interval)
 }
