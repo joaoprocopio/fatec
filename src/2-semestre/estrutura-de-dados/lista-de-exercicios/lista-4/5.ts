@@ -13,6 +13,9 @@ II) é acionada, o cliente é atendido (imprime-se a mensagem “senha xyz – p
 III) é acionada, imprime-se a mensagem “O tamanho da fila é...#tamanho da fila”.
 */
 
+import { cac } from "cac"
+
+const cli = cac("Menu")
 const AvailableChars = "abcdefghijklmnopqrstuvwxyz0123456789"
 
 class ServiceQueue {
@@ -50,12 +53,7 @@ class ServiceQueue {
 
 const serviceQueue = new ServiceQueue()
 
-console.log("Estado da fila:", serviceQueue.queue)
-console.log("Ticket gerado! ", serviceQueue.generateTicket())
-console.log("Estado da fila: ", serviceQueue.queue)
-console.log("Gerando mais um ticket!", serviceQueue.generateTicket())
-console.log("Estado da fila: ", serviceQueue.queue)
-console.log("Atendendo um ticket!", serviceQueue.attendTicket())
-console.log("Estado da fila: ", serviceQueue.queue)
-console.log("Atendendo mais um ticket!", serviceQueue.attendTicket())
-console.log("Estado da fila: ", serviceQueue.queue)
+cli.command("[root]", "Start service queue").action((action) => console.log(action))
+
+cli.help()
+const command = cli.parse()
