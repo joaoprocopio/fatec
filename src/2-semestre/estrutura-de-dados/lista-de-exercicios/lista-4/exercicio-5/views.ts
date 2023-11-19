@@ -19,8 +19,8 @@ import { generateServiceQueue } from "./services"
 const prompt = inquirer.createPromptModule()
 const serviceQueue = generateServiceQueue()
 
-const generateQuestions = async () =>
-  await prompt([
+const generateQuestions = async () => {
+  const question = await prompt([
     {
       type: "list",
       name: "selected",
@@ -49,6 +49,9 @@ const generateQuestions = async () =>
       ]
     }
   ])
+
+  return question
+}
 
 const menu = async () => {
   const { selected } = await generateQuestions()
