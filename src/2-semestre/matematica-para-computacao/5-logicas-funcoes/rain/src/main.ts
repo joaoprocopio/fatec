@@ -72,12 +72,6 @@ function deleteParticle(id) {
   }
 }
 
-function deleteAllParticles() {
-  for (let i = 0; i < particles.length; i++) {
-    particles.splice(i, 1)
-  }
-}
-
 function drawParticles() {
   for (let i = 0; i < particles.length; i++) {
     const position = particles[i].position
