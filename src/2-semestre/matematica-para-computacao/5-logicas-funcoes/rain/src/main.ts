@@ -1,3 +1,6 @@
+// Se inspirar nesse cara
+// https://codepen.io/awinhayden/pen/VmJoqe
+
 const rainEl = document.getElementById("rain") as HTMLCanvasElement
 
 const context = rainEl.getContext("2d") as CanvasRenderingContext2D
