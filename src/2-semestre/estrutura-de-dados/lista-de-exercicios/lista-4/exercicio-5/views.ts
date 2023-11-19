@@ -32,7 +32,8 @@ do {
   selected = prompt(
     `Escolha uma opção:\n${Object.entries(options)
       .map(([key, value]) => `${key} - ${value}`)
-      .join("\n")}`
+      .join("\n")}
+    \n`
   )
 
   switch (selected) {
