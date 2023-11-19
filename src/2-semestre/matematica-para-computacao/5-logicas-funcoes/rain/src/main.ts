@@ -1,42 +1,189 @@
-// Se inspirar nesse cara
-// https://codepen.io/awinhayden/pen/VmJoqe
+const maxParticles = 200
+let numParticles = 0
+const particles = []
+const collisionDamper = 0.1
 
-const rainEl = document.getElementById("rain") as HTMLCanvasElement
+const canvas = document.querySelector("canvas")
+const ctx = canvas.getContext("2d")
 
-const context = rainEl.getContext("2d") as CanvasRenderingContext2D
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
 
-const drawObject = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, center: number[], radius: number) => {
-  const centerX = Math.floor(center[0])
-  const centerY = Math.floor(center[1])
-
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.beginPath()
-  context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false)
-  context.fillStyle = "white"
-  context.fill()
+function particle() {
+  const p = this
+  p.id = Date.now()
+  p.removeParticle = false
+  p.setParticle = function () {
+    p.position = {
+      x: 40 + Math.random() * (canvas.width - 40),
+      y: -10 - Math.random() * 50,
+      z: Math.random() * 10
+    }
+    p.velocity = {
+      x: 0,
+      y: 0
+    }
+    p.alpha = 1
+    p.length = 10
+    p.lineWidth = 1 - p.position.z / 12
+    p.acceleration = {
+      x: 0,
+      y: 0.8 - p.position.z / 10
+    }
+    if (p.removeParticle) {
+      deleteParticle(p.id)
+    }
+  }
+  p.setParticle()
 }
 
-const updateCoordinates = (coords: number[], position: number[], t: number) => {
-  coords[0] = Math.floor(coords[0] + position[0] * t)
-  coords[1] = Math.floor(coords[1] + position[1] * t)
+function newParticle() {
+  const curPart = new particle()
+  particles.push(curPart)
 }
 
-window.onload = () => {
-  const velocity = 10.0
-  const angle = 90.0
-  const center: number[] = [rainEl.width / 2, 0]
-  const position: number[] = [0, 0]
-  let time: number = 0 // initial time
-  const radius: number = 10 // circle radius
-  const interval: number = 50 //time interval (ms)
+function deleteParticle(id) {
+  for (let i = 0; i < particles.length; i++) {
+    if (particles[i].id === id) {
+      particles[i].removed = true
+      particles.splice(i, 1)
+    }
+  }
+}
 
-  position[0] = velocity * Math.cos((Math.PI * angle) / 180)
-  position[1] = velocity * Math.sin((Math.PI * angle) / 180)
+function deleteAllParticles() {
+  for (let i = 0; i < particles.length; i++) {
+    particles.splice(i, 1)
+  }
+}
 
-  setInterval(() => {
-    time = (time + interval) / interval
+function drawParticles() {
+  for (let i = 0; i < particles.length; i++) {
+    const position = particles[i].position
+    ctx.strokeStyle = "rgba(255,255,255," + particles[i].alpha + ")"
+    ctx.lineWidth = particles[i].lineWidth
+    ctx.beginPath()
+    ctx.moveTo(position.x, position.y)
+    ctx.lineTo(position.x, position.y + particles[i].length)
+    ctx.stroke()
+  }
+}
 
-    updateCoordinates(center, position, time)
-    drawObject(rainEl, context, center, radius)
-  }, interval)
+function updateParticles() {
+  for (let i = 0; i < particles.length; i++) {
+    // Update velocity (Acceleration)
+    particles[i].velocity.x += particles[i].acceleration.x
+    particles[i].velocity.y += particles[i].acceleration.y
+
+    // Update position based on velocity
+    particles[i].position.x += particles[i].velocity.x
+    particles[i].position.y += particles[i].velocity.y
+
+    // Check current position relative to floor
+    checkFloorCollision(i, particles[i].position.y)
+
+    if (particles[i]) {
+      // Check next position relative to floor
+      const nextVy = particles[i].velocity.y + particles[i].acceleration.y
+      const nextPy = particles[i].position.y + particles[i].velocity.y
+      checkFloorCollision(i, nextPy)
+    }
+
+    if (particles[i]) {
+      // Update the length of the rain drop based on velocity
+      particles[i].length = particles[i].velocity.y * 1.8
+
+      // The negative length gives the bounce effect, but it buggy, so this resets particles when the length is below -20
+      if (particles[i].length <= -20) {
+        particles[i].setParticle()
+      }
+    }
+
+    if (particles[i] && particles[i].removed) {
+      particles.splice(i, 1)
+    }
+  }
+}
+
+function checkFloorCollision(i, nextPy) {
+  if (nextPy >= canvas.height - particles[i].position.z * (canvas.height / 15)) {
+    particles[i].velocity.y *= -1
+    particles[i].velocity.y *= collisionDamper
+    particles[i].length = 3
+    if (particles[i].velocity.y >= -0.2 && particles[i].velocity.y <= 0.2) {
+      particles[i].setParticle()
+    }
+  }
+}
+
+function loop() {
+  clear()
+  update()
+  draw()
+  queue()
+}
+
+function clear() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+}
+function filterNonRemovable(p) {
+  return !p.removeParticle
+}
+function removeParticle() {
+  const filteredParticles = particles.filter(filterNonRemovable)
+  if (filteredParticles[filteredParticles.length - 1]) {
+    filteredParticles[filteredParticles.length - 1].removeParticle = true
+  }
+}
+
+function update() {
+  const filteredParticles = particles.filter(filterNonRemovable)
+  if (filteredParticles.length < numParticles) {
+    newParticle()
+  } else if (filteredParticles.length > numParticles) {
+    removeParticle()
+  }
+  updateParticles()
+}
+
+function draw() {
+  drawParticles()
+}
+
+function queue() {
+  window.requestAnimationFrame(loop)
+}
+
+function startRain() {
+  let setInt
+  setInt = setInterval(function () {
+    if (numParticles < maxParticles) {
+      numParticles++
+    } else {
+      clearInterval(setInt)
+      setTimeout(function () {
+        stopRain()
+      }, 8000)
+    }
+  }, 20)
+}
+
+function stopRain() {
+  let setInt
+  setInt = setInterval(function () {
+    if (numParticles > 10) {
+      numParticles--
+    } else {
+      clearInterval(setInt)
+      setTimeout(function () {
+        startRain()
+      }, 5000)
+    }
+  }, 50)
+}
+window.onload = function () {
+  setTimeout(function () {
+    loop()
+    startRain()
+  }, 100)
 }
