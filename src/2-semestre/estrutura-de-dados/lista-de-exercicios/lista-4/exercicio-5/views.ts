@@ -14,7 +14,9 @@
 */
 
 import inquirer from "inquirer"
+
 import { generateServiceQueue } from "./services"
+import { sleep } from "./utils"
 
 const prompt = inquirer.createPromptModule()
 const serviceQueue = generateServiceQueue()
@@ -54,6 +56,8 @@ const generateQuestions = async () => {
 }
 
 const menu = async () => {
+  console.clear()
+
   const { selected } = await generateQuestions()
 
   switch (selected) {
@@ -77,9 +81,11 @@ const menu = async () => {
       break
   }
 
+  await sleep(1.5 * 1000)
+
   if (selected !== "quit") {
     await menu()
   }
 }
 
-menu()
+setTimeout(menu, 500)
