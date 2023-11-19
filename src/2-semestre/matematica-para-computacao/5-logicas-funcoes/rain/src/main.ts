@@ -9,9 +9,33 @@ const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
+interface Axis {
+  x: number
+  y: number
+}
+interface Coordinates extends Axis {
+  z: number
+}
+
 class Particle {
   id: number = Date.now()
   removeParticle: boolean = false
+  position: Coordinates = {
+    x: 0,
+    y: 0,
+    z: 0
+  }
+  velocity: Axis = {
+    x: 0,
+    y: 0
+  }
+  alpha: number = 1
+  length: number = 10
+  lineWidth: number = 1
+  acceleration: Axis = {
+    x: 0,
+    y: 0
+  }
 
   constructor() {
     this.setParticle()
@@ -23,12 +47,6 @@ class Particle {
       y: -10 - Math.random() * 50,
       z: Math.random() * 10
     }
-    this.velocity = {
-      x: 0,
-      y: 0
-    }
-    this.alpha = 1
-    this.length = 10
     this.lineWidth = 1 - this.position.z / 12
     this.acceleration = {
       x: 0,
