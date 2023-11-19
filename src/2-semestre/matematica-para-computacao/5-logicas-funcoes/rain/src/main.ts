@@ -1,6 +1,6 @@
 const maxParticles = 200
 let numParticles = 0
-const particles = []
+const particles: Particle[] = []
 const collisionDamper = 0.1
 
 const canvas = document.getElementById("rain") as HTMLCanvasElement
@@ -9,36 +9,39 @@ const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
-function particle() {
-  const p = this
-  p.id = Date.now()
-  p.removeParticle = false
-  p.setParticle = function () {
-    p.position = {
+class Particle {
+  id: number = Date.now()
+  removeParticle: boolean = false
+
+  constructor() {
+    this.setParticle()
+  }
+
+  setParticle() {
+    this.position = {
       x: 40 + Math.random() * (canvas.width - 40),
       y: -10 - Math.random() * 50,
       z: Math.random() * 10
     }
-    p.velocity = {
+    this.velocity = {
       x: 0,
       y: 0
     }
-    p.alpha = 1
-    p.length = 10
-    p.lineWidth = 1 - p.position.z / 12
-    p.acceleration = {
+    this.alpha = 1
+    this.length = 10
+    this.lineWidth = 1 - this.position.z / 12
+    this.acceleration = {
       x: 0,
-      y: 0.8 - p.position.z / 10
+      y: 0.8 - this.position.z / 10
     }
-    if (p.removeParticle) {
-      deleteParticle(p.id)
+    if (this.removeParticle) {
+      deleteParticle(this.id)
     }
   }
-  p.setParticle()
 }
 
 function newParticle() {
-  const curPart = new particle()
+  const curPart = new Particle()
   particles.push(curPart)
 }
 
@@ -181,6 +184,7 @@ function stopRain() {
     }
   }, 50)
 }
+
 window.onload = function () {
   setTimeout(function () {
     loop()
