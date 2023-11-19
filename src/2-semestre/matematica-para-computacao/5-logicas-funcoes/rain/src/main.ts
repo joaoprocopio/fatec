@@ -1,9 +1,6 @@
-const rainingCanvasEl = document.getElementById("rainingCanvas") as HTMLCanvasElement
-const velocityInputEl = document.getElementById("velocity") as HTMLInputElement
-const angleInputEl = document.getElementById("angle") as HTMLInputElement
-const playButtonEl = document.getElementById("playButton") as HTMLButtonElement
+const rainEl = document.getElementById("rain") as HTMLCanvasElement
 
-const context = rainingCanvasEl.getContext("2d") as CanvasRenderingContext2D
+const context = rainEl.getContext("2d") as CanvasRenderingContext2D
 
 const drawObject = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, center: number[], radius: number) => {
   const centerX = Math.floor(center[0])
@@ -21,10 +18,10 @@ const updateCoordinates = (coords: number[], position: number[], t: number) => {
   coords[1] = Math.floor(coords[1] + position[1] * t)
 }
 
-playButtonEl.onclick = () => {
-  const velocity = parseFloat(velocityInputEl.value)
-  const angle = parseFloat(angleInputEl.value)
-  const center: number[] = [rainingCanvasEl.width / 2, 0]
+window.onload = () => {
+  const velocity = 10.0
+  const angle = 90.0
+  const center: number[] = [rainEl.width / 2, 0]
   const position: number[] = [0, 0]
   let time: number = 0 // initial time
   const radius: number = 10 // circle radius
@@ -37,6 +34,6 @@ playButtonEl.onclick = () => {
     time = (time + interval) / interval
 
     updateCoordinates(center, position, time)
-    drawObject(rainingCanvasEl, context, center, radius)
+    drawObject(rainEl, context, center, radius)
   }, interval)
 }
