@@ -35,7 +35,7 @@ export class ServiceQueue extends Queue<string> {
     const random = Math.floor(Math.random() * AlphanumericCharacters.length)
     const ticket = AlphanumericCharacters.slice(random, random + 3)
 
-    if (this.queue.includes(ticket)) {
+    if (this.queue.includes(ticket) || ticket.length !== 3) {
       return this.generateTicket()
     }
 
