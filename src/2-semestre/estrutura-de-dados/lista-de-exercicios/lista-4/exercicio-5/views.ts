@@ -19,10 +19,11 @@ import { generateServiceQueue } from "./services"
 const prompt = inquirer.createPromptModule()
 const serviceQueue = generateServiceQueue()
 
-;(async () => {
-  const result = await prompt([
+const generateQuestions = async () =>
+  await prompt([
     {
       type: "list",
+
       name: "selected",
       message: "Escolha uma opção",
       choices: [
@@ -50,5 +51,29 @@ const serviceQueue = generateServiceQueue()
     }
   ])
 
-  console.log(result)
-})()
+const main = async () => {
+  const { selected } = await generateQuestions()
+
+  switch (selected) {
+    case "generate":
+      console.log(serviceQueue.generateTicket())
+
+      break
+    case "attend":
+      console.log(serviceQueue.attendTicket())
+
+      break
+    case "length":
+      console.log(serviceQueue.length)
+
+      break
+    default:
+      break
+  }
+
+  if (selected !== "quit") {
+    await main()
+  }
+}
+
+main()
