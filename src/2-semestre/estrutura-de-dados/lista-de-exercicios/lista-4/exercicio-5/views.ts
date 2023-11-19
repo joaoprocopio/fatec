@@ -54,6 +54,10 @@ const main = async () => {
   const { selected } = await generateQuestions()
 
   switch (selected) {
+    case "quit":
+      console.log("Saindo...")
+
+      break
     case "generate":
       console.log("Senha de atendimento gerada: ", serviceQueue.generateTicket())
 
@@ -73,8 +77,6 @@ const main = async () => {
   if (selected !== "quit") {
     await main()
   }
-
-  console.log("Saindo...")
 }
 
 main()
