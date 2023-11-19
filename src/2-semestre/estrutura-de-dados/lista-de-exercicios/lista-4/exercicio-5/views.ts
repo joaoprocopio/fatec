@@ -23,7 +23,6 @@ const generateQuestions = async () =>
   await prompt([
     {
       type: "list",
-
       name: "selected",
       message: "Escolha uma opção",
       choices: [
@@ -56,15 +55,15 @@ const main = async () => {
 
   switch (selected) {
     case "generate":
-      console.log(serviceQueue.generateTicket())
+      console.log("Senha de atendimento gerada: ", serviceQueue.generateTicket())
 
       break
     case "attend":
-      console.log(serviceQueue.attendTicket())
+      console.log("Senha de atendimento atendida: ", serviceQueue.attendTicket())
 
       break
     case "length":
-      console.log(serviceQueue.length)
+      console.log("Comprimento da fila de atendimento: ", serviceQueue.length)
 
       break
     default:
@@ -74,6 +73,8 @@ const main = async () => {
   if (selected !== "quit") {
     await main()
   }
+
+  console.log("Saindo...")
 }
 
 main()
