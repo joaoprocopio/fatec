@@ -16,7 +16,7 @@
 import inquirer from "inquirer"
 
 import { generateServiceQueue } from "./services"
-import { sleep } from "./utils"
+import { sleep, msToS } from "./utils"
 
 const prompt = inquirer.createPromptModule()
 const serviceQueue = generateServiceQueue()
@@ -29,22 +29,18 @@ const generateQuestions = async () => {
       message: "Escolha uma opção",
       choices: [
         {
-          key: "0",
           name: "Sair",
           value: "quit"
         },
         {
-          key: "1",
           name: "Gerar senha de atendimento",
           value: "generate"
         },
         {
-          key: "2",
           name: "Atender próxima senha",
           value: "attend"
         },
         {
-          key: "2",
           name: "Exibir o tamanho da fila",
           value: "length"
         }
@@ -66,22 +62,22 @@ const menu = async () => {
 
       break
     case "generate":
-      console.log("Senha de atendimento gerada: ", serviceQueue.generateTicket())
+      console.log(`Senha de atendimento gerada: ${serviceQueue.generateTicket()}`)
 
       break
     case "attend":
-      console.log("Senha de atendimento atendida: ", serviceQueue.attendTicket())
+      console.log(`Senha de atendimento à ser atendida: ${serviceQueue.attendTicket()}`)
 
       break
     case "length":
-      console.log("Comprimento da fila de atendimento: ", serviceQueue.length)
+      console.log(`Comprimento da fila de atendimento: ${serviceQueue.length}`)
 
       break
     default:
       break
   }
 
-  await sleep(1.5 * 1000)
+  await sleep(msToS(2.5))
 
   if (selected !== "quit") {
     await menu()
