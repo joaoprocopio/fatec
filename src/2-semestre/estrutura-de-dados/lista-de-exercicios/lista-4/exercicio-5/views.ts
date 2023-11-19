@@ -16,5 +16,39 @@
 import inquirer from "inquirer"
 import { generateServiceQueue } from "./services"
 
-const serviceQueue = generateServiceQueue()
 const prompt = inquirer.createPromptModule()
+const serviceQueue = generateServiceQueue()
+
+;(async () => {
+  const result = await prompt([
+    {
+      type: "list",
+      name: "selected",
+      message: "Escolha uma opção",
+      choices: [
+        {
+          key: "0",
+          name: "Sair",
+          value: "quit"
+        },
+        {
+          key: "1",
+          name: "Gerar senha de atendimento",
+          value: "generate"
+        },
+        {
+          key: "2",
+          name: "Atender próxima senha",
+          value: "attend"
+        },
+        {
+          key: "2",
+          name: "Exibir o tamanho da fila",
+          value: "length"
+        }
+      ]
+    }
+  ])
+
+  console.log(result)
+})()
