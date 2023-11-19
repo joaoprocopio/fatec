@@ -88,4 +88,4 @@ const menu = async () => {
   }
 }
 
-setTimeout(menu, 500)
+menu()
