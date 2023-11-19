@@ -4,7 +4,7 @@ const particles: Particle[] = []
 const collisionDamper = 0.1
 
 const canvas = document.getElementById("rain") as HTMLCanvasElement
-const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
+const context = canvas.getContext("2d") as CanvasRenderingContext2D
 
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
@@ -29,7 +29,6 @@ class Particle {
     x: 0,
     y: 0
   }
-  alpha: number = 1
   length: number = 10
   lineWidth: number = 1
   acceleration: Axis = {
@@ -75,12 +74,12 @@ function deleteParticle(id) {
 function drawParticles() {
   for (let i = 0; i < particles.length; i++) {
     const position = particles[i].position
-    ctx.strokeStyle = "rgba(255,255,255," + particles[i].alpha + ")"
-    ctx.lineWidth = particles[i].lineWidth
-    ctx.beginPath()
-    ctx.moveTo(position.x, position.y)
-    ctx.lineTo(position.x, position.y + particles[i].length)
-    ctx.stroke()
+    context.strokeStyle = "lightblue"
+    context.lineWidth = particles[i].lineWidth
+    context.beginPath()
+    context.moveTo(position.x, position.y)
+    context.lineTo(position.x, position.y + particles[i].length)
+    context.stroke()
   }
 }
 
@@ -139,7 +138,7 @@ function loop() {
 }
 
 function clear() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  context.clearRect(0, 0, canvas.width, canvas.height)
 }
 function filterNonRemovable(p) {
   return !p.removeParticle
