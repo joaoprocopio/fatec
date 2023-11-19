@@ -50,7 +50,7 @@ const generateQuestions = async () =>
     }
   ])
 
-const main = async () => {
+const menu = async () => {
   const { selected } = await generateQuestions()
 
   switch (selected) {
@@ -75,8 +75,8 @@ const main = async () => {
   }
 
   if (selected !== "quit") {
-    await main()
+    await menu()
   }
 }
 
-main()
+menu()
