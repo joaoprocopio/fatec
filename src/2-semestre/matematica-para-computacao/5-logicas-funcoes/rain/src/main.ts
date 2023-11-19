@@ -3,8 +3,8 @@ let numParticles = 0
 const particles = []
 const collisionDamper = 0.1
 
-const canvas = document.querySelector("canvas")
-const ctx = canvas.getContext("2d")
+const canvas = document.getElementById("rain") as HTMLCanvasElement
+const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
 
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
