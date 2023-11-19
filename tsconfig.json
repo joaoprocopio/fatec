@@ -1,3 +1,14 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json"
+  "extends": "@tsconfig/node16/tsconfig.json",
+
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  }
 }
