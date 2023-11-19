@@ -1,4 +1,4 @@
-const maxParticles = 200
+const maxParticles = 300
 let numParticles = 0
 const particles: Particle[] = []
 const collisionDamper = 0.1
@@ -21,10 +21,9 @@ class Particle {
   id: number = Date.now()
   removed: boolean = false
   removeParticle: boolean = false
-  position: Coordinates = {
+  position: Axis = {
     x: 0,
-    y: 0,
-    z: 0
+    y: 0
   }
   velocity: Axis = {
     x: 0,
@@ -44,13 +43,12 @@ class Particle {
   setParticle() {
     this.position = {
       x: 40 + Math.random() * (canvas.width - 40),
-      y: -10 - Math.random() * 50,
-      z: Math.random() * 10
+      y: -10 - Math.random() * 50
     }
-    this.lineWidth = 1 - this.position.z / 12
+    this.lineWidth = 1 - this.position.y / 120
     this.acceleration = {
       x: 0,
-      y: 0.8 - this.position.z / 10
+      y: 0.5 - this.position.y / 100
     }
     if (this.removeParticle) {
       deleteParticle(this.id)
@@ -120,7 +118,7 @@ function updateParticles() {
 }
 
 function checkFloorCollision(index: number, nextPy: number) {
-  if (nextPy >= canvas.height - particles[index].position.z * (canvas.height / 15)) {
+  if (nextPy >= canvas.height * (canvas.height / 15)) {
     particles[index].velocity.y *= -1
     particles[index].velocity.y *= collisionDamper
     particles[index].length = 3
