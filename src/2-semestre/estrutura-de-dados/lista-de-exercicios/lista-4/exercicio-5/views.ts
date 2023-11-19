@@ -20,7 +20,7 @@ const prompt = inquirer.createPromptModule()
 const serviceQueue = generateServiceQueue()
 
 const generateQuestions = async () => {
-  const question = await prompt([
+  const questions = await prompt([
     {
       type: "list",
       name: "selected",
@@ -50,7 +50,7 @@ const generateQuestions = async () => {
     }
   ])
 
-  return question
+  return questions
 }
 
 const menu = async () => {
