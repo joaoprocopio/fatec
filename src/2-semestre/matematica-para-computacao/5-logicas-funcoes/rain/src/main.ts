@@ -19,6 +19,7 @@ interface Coordinates extends Axis {
 
 class Particle {
   id: number = Date.now()
+  removed: boolean = false
   removeParticle: boolean = false
   position: Coordinates = {
     x: 0,
@@ -62,7 +63,7 @@ function newParticle() {
   particles.push(curPart)
 }
 
-function deleteParticle(id) {
+function deleteParticle(id: number) {
   for (let i = 0; i < particles.length; i++) {
     if (particles[i].id === id) {
       particles[i].removed = true
@@ -98,7 +99,6 @@ function updateParticles() {
 
     if (particles[i]) {
       // Check next position relative to floor
-      const nextVy = particles[i].velocity.y + particles[i].acceleration.y
       const nextPy = particles[i].position.y + particles[i].velocity.y
       checkFloorCollision(i, nextPy)
     }
@@ -119,13 +119,13 @@ function updateParticles() {
   }
 }
 
-function checkFloorCollision(i, nextPy) {
-  if (nextPy >= canvas.height - particles[i].position.z * (canvas.height / 15)) {
-    particles[i].velocity.y *= -1
-    particles[i].velocity.y *= collisionDamper
-    particles[i].length = 3
-    if (particles[i].velocity.y >= -0.2 && particles[i].velocity.y <= 0.2) {
-      particles[i].setParticle()
+function checkFloorCollision(index: number, nextPy: number) {
+  if (nextPy >= canvas.height - particles[index].position.z * (canvas.height / 15)) {
+    particles[index].velocity.y *= -1
+    particles[index].velocity.y *= collisionDamper
+    particles[index].length = 3
+    if (particles[index].velocity.y >= -0.2 && particles[index].velocity.y <= 0.2) {
+      particles[index].setParticle()
     }
   }
 }
@@ -140,7 +140,7 @@ function loop() {
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height)
 }
-function filterNonRemovable(p) {
+function filterNonRemovable(p: Particle) {
   return !p.removeParticle
 }
 function removeParticle() {
@@ -169,8 +169,7 @@ function queue() {
 }
 
 function startRain() {
-  let setInt
-  setInt = setInterval(function () {
+  const setInt: number = setInterval(function () {
     if (numParticles < maxParticles) {
       numParticles++
     } else {
@@ -183,8 +182,7 @@ function startRain() {
 }
 
 function stopRain() {
-  let setInt
-  setInt = setInterval(function () {
+  const setInt: number = setInterval(function () {
     if (numParticles > 10) {
       numParticles--
     } else {
