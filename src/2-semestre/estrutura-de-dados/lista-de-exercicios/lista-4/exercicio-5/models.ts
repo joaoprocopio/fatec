@@ -35,6 +35,7 @@ export class ServiceQueue extends Queue<string> {
     const random = Math.floor(Math.random() * AlphanumericCharacters.length)
     const ticket = AlphanumericCharacters.slice(random, random + 3)
 
+    // Re-gera o ticket caso ele já exista na fila ou não tenha 3 caracteres
     if (this.queue.includes(ticket) || ticket.length !== 3) {
       return this.generateTicket()
     }
