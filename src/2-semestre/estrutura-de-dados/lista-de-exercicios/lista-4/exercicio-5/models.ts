@@ -11,12 +11,14 @@ export class Queue<T> {
     return this._queue.length
   }
 
+  // Empurra um item para o final da fila
   public enqueue(item: T): T[] {
     this._queue.push(item)
 
     return this.queue
   }
 
+  // Consome um item do início da fila
   public dequeue(): T | null {
     const item = this._queue.shift()
 
