@@ -73,11 +73,13 @@ function deleteParticle(id: number) {
 
 function drawParticles() {
   for (let i = 0; i < particles.length; i++) {
-    const position = particles[i].position
-    context.lineWidth = particles[i].lineWidth
+    const particle = particles[i]
+    const position = particle.position
+
+    context.lineWidth = particle.lineWidth
     context.beginPath()
     context.moveTo(position.x, position.y)
-    context.lineTo(position.x, position.y + particles[i].length)
+    context.lineTo(position.x, position.y + particle.length)
     context.stroke()
   }
 }
