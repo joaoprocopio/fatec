@@ -33,3 +33,16 @@ CREATE TABLE tbl_tarefas (
   FOREIGN KEY (id_funcionario) REFERENCES tbl_funcionarios(id_funcionario)
 );
 
+INSERT INTO tbl_departamentos (nome_departamento) VALUES
+('TI'),
+('RH'),
+('Finanças'),
+('Marketing'),
+('Vendas');
+
+INSERT INTO tbl_funcionarios (primeiro_nome, sobrenome, salario) VALUES
+('Clara', 'Ribeiro', 65000),
+('Rodrigo', 'Costa', 80000),
+('Juliana', 'Almeida', 90000),
+('Marcio', 'Cunha', 72000),
+('Helena', 'Lima', 68000);
