@@ -53,3 +53,11 @@ INSERT INTO tbl_funcionario_departamento (id_funcionario, id_departamento) VALUE
 (3, 2),
 (4, 2),
 (5, 5);
+
+CREATE VIEW v_funcionarios_salario_alto AS
+SELECT
+  UPPER(f.primeiro_nome) AS primeiro_nome,
+  f.salario AS salario
+FROM 
+  tbl_funcionarios As f
+WHERE salario > 70000;
