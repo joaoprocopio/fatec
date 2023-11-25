@@ -104,3 +104,13 @@ AS $$
   WHERE
     td.nome_departamento = nome_departamento_desejado;
 $$;
+
+CREATE TABLE tbl_log_salario (
+  id_log_salario SERIAL,
+  id_funcionario INT,
+
+  PRIMARY KEY (id_log_salario),
+  FOREIGN KEY (id_funcionario) REFERENCES tbl_funcionarios(id_funcionario)
+);
+
+-- CREATE TRIGGER tr_log_mudancas_salario
