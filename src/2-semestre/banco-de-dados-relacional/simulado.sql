@@ -63,10 +63,10 @@ INSERT INTO tbl_tarefas (nome_tarefa, prazo, id_funcionario) VALUES
 
 CREATE VIEW v_funcionarios_salario_alto AS
 SELECT
-  UPPER(f.primeiro_nome) AS primeiro_nome,
-  f.salario AS salario
+  UPPER(primeiro_nome) AS primeiro_nome,
+  salario AS salario
 FROM 
-  tbl_funcionarios As f
+  tbl_funcionarios
 WHERE 
   salario > 70000;
 
@@ -80,3 +80,27 @@ BEGIN ATOMIC
   WHERE
     id_tarefa = id_tarefa_novo;
 END;
+
+CREATE FUNCTION fc_obter_funcionarios_departamento(nome_departamento_desejado TEXT)
+RETURNS TABLE (
+  primeiro_nome TEXT,
+  nome_departamento TEXT
+)
+LANGUAGE SQL
+AS $$
+  SELECT
+    tf.primeiro_nome,
+    td.nome_departamento
+  FROM
+    tbl_funcionarios AS tf
+  JOIN
+    tbl_funcionario_departamento AS tfd
+  ON
+    tfd.id_funcionario = tf.id_funcionario
+  JOIN 
+    tbl_departamentos AS td
+  ON 
+    td.id_departamento = tfd.id_departamento
+  WHERE
+    td.nome_departamento = nome_departamento_desejado;
+$$;
