@@ -67,4 +67,16 @@ SELECT
   f.salario AS salario
 FROM 
   tbl_funcionarios As f
-WHERE salario > 70000;
+WHERE 
+  salario > 70000;
+
+CREATE PROCEDURE sp_atribuir_tarefa_funcionario(id_tarefa_novo INT, id_funcionario_novo INT)
+LANGUAGE SQL
+BEGIN ATOMIC
+  UPDATE
+    tbl_tarefas
+  SET
+    id_funcionario = id_funcionario_novo
+  WHERE
+    id_tarefa = id_tarefa_novo;
+END;
