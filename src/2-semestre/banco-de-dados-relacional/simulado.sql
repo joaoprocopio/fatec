@@ -46,3 +46,10 @@ INSERT INTO tbl_funcionarios (primeiro_nome, sobrenome, salario) VALUES
 ('Juliana', 'Almeida', 90000),
 ('Marcio', 'Cunha', 72000),
 ('Helena', 'Lima', 68000);
+
+INSERT INTO tbl_funcionario_departamento (id_funcionario, id_departamento) VALUES
+(1, 1),
+(2, 1),
+(3, 2),
+(4, 2),
+(5, 5);
