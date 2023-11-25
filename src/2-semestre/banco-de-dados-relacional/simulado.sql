@@ -6,7 +6,7 @@ CREATE TABLE tbl_departamentos (
 );
 
 CREATE TABLE tbl_funcionarios (
-  id_funcionario SERIAL PRIMARY KEY,
+  id_funcionario SERIAL,
   primeiro_nome TEXT,
   sobrenome TEXT,
   salario REAL,
@@ -15,10 +15,8 @@ CREATE TABLE tbl_funcionarios (
 );
 
 CREATE TABLE tbl_funcionario_departamento (
-  id_funcionario SERIAL,
+  id_funcionario INT,
   id_departamento INT,
-
-  PRIMARY KEY (id_funcionario, id_departamento),
 
   FOREIGN KEY (id_funcionario) REFERENCES tbl_funcionarios(id_funcionario),
   FOREIGN KEY (id_departamento) REFERENCES tbl_departamentos(id_departamento)
