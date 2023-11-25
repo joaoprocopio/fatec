@@ -108,6 +108,8 @@ $$;
 CREATE TABLE tbl_log_salario (
   id_log_salario SERIAL,
   id_funcionario INT,
+  salario_anterior REAL,
+  novo_anterior REAL,
 
   PRIMARY KEY (id_log_salario),
   FOREIGN KEY (id_funcionario) REFERENCES tbl_funcionarios(id_funcionario)
