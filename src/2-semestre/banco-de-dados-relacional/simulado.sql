@@ -54,6 +54,13 @@ INSERT INTO tbl_funcionario_departamento (id_funcionario, id_departamento) VALUE
 (4, 2),
 (5, 5);
 
+INSERT INTO tbl_tarefas (nome_tarefa, prazo, id_funcionario) VALUES
+('Tarefa 1', '2023-12-01', 1),
+('Tarefa 2', '2023-12-15', 2),
+('Tarefa 3', '2023-12-10', 3),
+('Tarefa 4', '2023-12-05', 4),
+('Tarefa 5', '2023-11-30', 5);
+
 CREATE VIEW v_funcionarios_salario_alto AS
 SELECT
   UPPER(f.primeiro_nome) AS primeiro_nome,
