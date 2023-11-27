@@ -1,0 +1,38 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  version="1.1"
+  x="0px"
+  y="0px"
+  viewBox="0 0 48 48"
+  style="enable-background:new 0 0 48 48;"
+  xmlSpace="preserve">
+  <path
+    style="fill:none;stroke:#F44336;stroke-width:4;stroke-miterlimit:10;"
+    d="M43,7h-3C21.775,7,7,21.775,7,40v3"
+  />
+  <path
+    style="fill:none;stroke:#FF9800;stroke-width:4;stroke-miterlimit:10;"
+    d="M43,11h-3c-16.016,0-29,12.984-29,29v3"
+  />
+  <path
+    style="fill:none;stroke:#FFC107;stroke-width:4;stroke-miterlimit:10;"
+    d="M43,15h-3c-13.807,0-25,11.193-25,25v3"
+  />
+  <path
+    style="fill:none;stroke:#4CAF50;stroke-width:4;stroke-miterlimit:10;"
+    d="M43,19h-3c-11.598,0-21,9.402-21,21v3"
+  />
+  <path
+    style="fill:none;stroke:#2196F3;stroke-width:4;stroke-miterlimit:10;"
+    d="M43,23h-3c-9.389,0-17,7.611-17,17v3"
+  />
+  <path
+    style="fill:none;stroke:#3F51B5;stroke-width:4;stroke-miterlimit:10;"
+    d="M43,27h-3c-7.18,0-13,5.82-13,13v3"
+  />
+  <path
+    style="fill:none;stroke:#9C27B0;stroke-width:4;stroke-miterlimit:10;"
+    d="M43,31h-3c-4.971,0-9,4.029-9,9v3"
+  />
+</svg>
