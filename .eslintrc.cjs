@@ -6,7 +6,14 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: ["eslint:recommended", "plugin:prettier/recommended", "plugin:@typescript-eslint/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended"
+  ],
   overrides: [
     {
       env: {
@@ -18,13 +25,19 @@ module.exports = {
       }
     }
   ],
+  settings: {
+    react: {
+      version: "18.2"
+    }
+  },
+  plugins: ["react-refresh", "@typescript-eslint"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module"
   },
   rules: {
-    "@typescript-eslint/no-unused-vars": "off"
-  },
-  plugins: ["@typescript-eslint"]
+    "@typescript-eslint/no-unused-vars": "off",
+    "react-refresh/only-export-components": ["warn", { allowConstantExport: true }]
+  }
 }
