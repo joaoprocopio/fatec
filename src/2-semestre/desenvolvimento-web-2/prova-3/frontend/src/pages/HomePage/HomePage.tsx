@@ -14,7 +14,7 @@ export default function HomePage() {
 
           return (
             <div key={color.id} className="color" style={{ backgroundColor: hexColor }}>
-              <p className="color-text">{JSON.stringify(color)}</p>
+              <p className="color-text">{hexColor}</p>
             </div>
           )
         })}
