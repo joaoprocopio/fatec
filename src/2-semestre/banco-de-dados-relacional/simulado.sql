@@ -115,4 +115,30 @@ CREATE TABLE tbl_log_salario (
   FOREIGN KEY (id_funcionario) REFERENCES tbl_funcionarios(id_funcionario)
 );
 
+/*
+CREATE FUNCTION fc_log_mudanca_salario(id_funcionario_novo INT, salario_anterior_novo REAL, salario_novo_novo REAL)
+RETURNS void
+LANGUAGE SQL
+BEGIN ATOMIC
+  INSERT INTO tbl_log_salario (id_funcionario, salario_anterior, salario_novo) VALUES
+  (id_funcionario_novo, salario_anterior_novo, salario_novo_novo);
+END;
+
+CREATE TRIGGER tr_log_mudancas_salario
+  AFTER UPDATE ON tbl_funcionarios
+  FOR EACH ROW
+  WHEN (NEW.salario <> OLD.salario)
+  EXECUTE FUNCTION fc_test();
+
+*/
+
 -- CREATE TRIGGER tr_log_mudancas_salario
+-- AFTER UPDATE OF ON tbl_funcionarios
+-- FOR EACH ROW
+-- BEGIN
+--     IF NEW.salario != OLD.salario THEN
+--         INSERT INTO tbl_log_salario (id_funcionario, salario_anterior, novo_salario)
+--         VALUES (OLD.id_funcionario, OLD.salario, NEW.salario);
+--     END IF;
+-- END;
+
