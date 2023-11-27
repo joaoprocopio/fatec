@@ -1,6 +1,10 @@
 {
   "private": true,
   "type": "module",
+  "scripts": {
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0 --ignore-path .gitignore",
+    "lint:fix": "npm run lint -- --fix"
+  },
   "devDependencies": {
     "@rushstack/eslint-config": "^3.4.1",
     "@tsconfig/node16": "^16.1.1",
