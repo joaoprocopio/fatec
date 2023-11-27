@@ -3,10 +3,18 @@ import { ReactNode, createContext, useEffect, useState } from "react"
 import type { TColors } from "~/schemas"
 import { ColorsServices } from "~/services"
 
-export const ColorsContext = createContext({})
+const ColorsContextDefaultValues: TColorsContext = {
+  colors: []
+}
+
+export type TColorsContext = {
+  colors: TColors
+}
+
+export const ColorsContext = createContext<TColorsContext>(ColorsContextDefaultValues)
 
 export default function ColorsProvider({ children }: { children: ReactNode }) {
-  const [colors, setColors] = useState<TColors>([])
+  const [colors, setColors] = useState<TColors>(ColorsContextDefaultValues.colors)
 
   useEffect(() => {
     const getColors = async () => {
