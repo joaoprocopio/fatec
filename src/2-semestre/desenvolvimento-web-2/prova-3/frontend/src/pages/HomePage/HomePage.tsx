@@ -31,10 +31,12 @@ export default function HomePage() {
   }
 
   return (
-    <div>
+    <main className="home-page">
+      <h1 className="hp-title">Colorify</h1>
+
       <ColorForm handleSubmit={handleSubmit} />
 
       <ColorList colors={colors} handleRemove={handleRemove} />
-    </div>
+    </main>
   )
 }

@@ -1,3 +1,5 @@
+import "./ColorForm.scss"
+
 import type { ChangeEventHandler, FormEvent, FormEventHandler } from "react"
 import { useState } from "react"
 
@@ -35,12 +37,31 @@ export default function ColorForm({ handleSubmit }: TColorForm) {
   }
 
   return (
-    <form onSubmit={(event) => handleSubmit(event, color)}>
-      <input name="red" placeholder="Vermelho" onChange={handleChange} onBeforeInput={handleBeforeInput} />
-      <input name="blue" placeholder="Azul" onChange={handleChange} onBeforeInput={handleBeforeInput} />
-      <input name="green" placeholder="Verde" onChange={handleChange} onBeforeInput={handleBeforeInput} />
-
-      <button type="submit">Criar</button>
+    <form className="color-form" onSubmit={(event) => handleSubmit(event, color)}>
+      <input
+        className="cf-input"
+        name="red"
+        placeholder="Vermelho"
+        onChange={handleChange}
+        onBeforeInput={handleBeforeInput}
+      />
+      <input
+        className="cf-input"
+        name="blue"
+        placeholder="Azul"
+        onChange={handleChange}
+        onBeforeInput={handleBeforeInput}
+      />
+      <input
+        className="cf-input"
+        name="green"
+        placeholder="Verde"
+        onChange={handleChange}
+        onBeforeInput={handleBeforeInput}
+      />
+      <button className="cf-submit" type="submit">
+        Criar
+      </button>
     </form>
   )
 }
