@@ -1,0 +1,22 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+
+  "exclude": ["./node_modules", "./dist"],
+  "include": ["./src", "./lib"],
+
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "emitDecoratorMetadata": true,
+    "removeComments": true,
+
+    "rootDir": ".",
+    "baseUrl": ".",
+    "outDir": "./dist",
+
+    "paths": {
+      "~/*": ["./src/*"],
+      "@/*": ["./lib/*"]
+    }
+  }
+}
