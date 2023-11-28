@@ -2,9 +2,8 @@
   "private": true,
   "scripts": {
     "dev": "tsx src/main.ts",
-    "build": "tsc",
-    "start": "node dist/src/main.ts",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "npm run lint -- --fix"
   },
   "keywords": [],
   "author": "",
