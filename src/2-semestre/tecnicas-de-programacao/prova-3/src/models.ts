@@ -1,4 +1,15 @@
-export class Course {
+export type TModel = {
+  id: number
+}
+
+export type TBaseCourse = {
+  name: string
+  credit: number
+}
+
+export type TCourse = TBaseCourse & TModel
+
+export class Course implements TCourse {
   static count: number = 1
 
   id: number
