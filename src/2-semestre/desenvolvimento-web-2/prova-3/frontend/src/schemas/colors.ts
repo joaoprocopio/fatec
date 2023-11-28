@@ -1,10 +1,14 @@
 import { z } from "zod"
 
-export const Color = z.object({
-  id: z.number(),
+export const BaseColor = z.object({
   red: z.number(),
   green: z.number(),
   blue: z.number()
+})
+export type TBaseColor = z.infer<typeof BaseColor>
+
+export const Color = BaseColor.extend({
+  id: z.number()
 })
 export type TColor = z.infer<typeof Color>
 
