@@ -25,6 +25,7 @@ export default function HomePage() {
     }))
   }
   const handleBeforeInput: FormEventHandler<HTMLInputElement> = (event) => {
+    // Garante que o número colocado esteja entre 0 e 255
     const ValidHexPattern = /^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm
 
     const value = event.currentTarget.value
