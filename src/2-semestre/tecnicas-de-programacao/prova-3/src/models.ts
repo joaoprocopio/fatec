@@ -18,4 +18,8 @@ export class Course {
       credit: this.credit
     }
   }
+
+  toString() {
+    return Object.values(this).join(",")
+  }
 }
