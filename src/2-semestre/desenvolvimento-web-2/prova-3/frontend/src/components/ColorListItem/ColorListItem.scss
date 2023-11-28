@@ -1,0 +1,11 @@
+.color-list-item {
+  height: 64px;
+  width: 100%;
+
+  .cli-text {
+    font-size: 32px;
+    font-weight: 700;
+    mix-blend-mode: difference;
+    filter: invert(1);
+  }
+}

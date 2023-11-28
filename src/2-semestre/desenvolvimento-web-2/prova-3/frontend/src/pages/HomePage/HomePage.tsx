@@ -1,10 +1,9 @@
 import "./HomePage.scss"
 
-import { toHex } from "~/helpers"
 import { useColors } from "~/hooks"
 import { ColorsServices } from "~/services"
 import type { TColorForm } from "~/components"
-import { ColorForm } from "~/components"
+import { ColorForm, ColorList } from "~/components"
 
 export default function HomePage() {
   const { colors, setColors } = useColors()
@@ -19,7 +18,7 @@ export default function HomePage() {
     setColors((colors) => [...colors, newColor])
   }
 
-  const handleRemoveColor = async (id: number) => {
+  const handleRemove = async (id: number) => {
     await ColorsServices.removeColor(id)
 
     const index = colors.findIndex((color) => color.id === id)
@@ -35,21 +34,7 @@ export default function HomePage() {
     <div>
       <ColorForm handleSubmit={handleSubmit} />
 
-      <div>
-        {colors.map((color) => {
-          const hexColor = toHex(color)
-
-          return (
-            <button
-              key={color.id}
-              onClick={() => handleRemoveColor(color.id)}
-              className="color"
-              style={{ backgroundColor: hexColor }}>
-              <p className="color-text">{hexColor}</p>
-            </button>
-          )
-        })}
-      </div>
+      <ColorList colors={colors} handleRemove={handleRemove} />
     </div>
   )
 }
