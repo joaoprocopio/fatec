@@ -14,7 +14,7 @@ export default function ColorListItem({ color, handleRemove }: TColorListItem) {
 
   return (
     <button className="color-list-item" onClick={handleRemove} style={{ backgroundColor: hex }}>
-      <span className="cli-text">{hex}</span>
+      <p className="cli-text">{hex}</p>
     </button>
   )
 }

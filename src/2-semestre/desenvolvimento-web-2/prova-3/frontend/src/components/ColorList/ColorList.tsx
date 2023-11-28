@@ -1,3 +1,5 @@
+import "./ColorList.scss"
+
 import type { TColors } from "~/schemas"
 
 import { ColorListItem } from "~/components"
@@ -9,7 +11,7 @@ export type TColorList = {
 
 export default function ColorList({ colors, handleRemove }: TColorList) {
   return (
-    <div>
+    <div className="color-list">
       {colors.map((color) => (
         <ColorListItem key={color.id} color={color} handleRemove={() => handleRemove(color.id)} />
       ))}

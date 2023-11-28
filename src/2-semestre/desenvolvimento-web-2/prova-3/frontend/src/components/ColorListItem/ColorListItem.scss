@@ -1,8 +1,14 @@
 .color-list-item {
+  all: unset;
+  cursor: pointer;
+
+  border-radius: 4px;
   height: 64px;
   width: 100%;
+  border: 1px solid #707070;
 
   .cli-text {
+    text-align: center;
     font-size: 32px;
     font-weight: 700;
     mix-blend-mode: difference;
