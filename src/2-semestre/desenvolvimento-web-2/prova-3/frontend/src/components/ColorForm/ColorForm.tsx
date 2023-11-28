@@ -4,7 +4,6 @@ import type { ChangeEventHandler, FormEvent, FormEventHandler } from "react"
 import { useState } from "react"
 
 import type { TBaseColor } from "~/schemas"
-import { ValidHexPattern } from "~/contants"
 
 export type TColorForm = {
   handleSubmit: (event: FormEvent<HTMLFormElement>, color: TBaseColor) => void
@@ -20,7 +19,7 @@ export default function ColorForm({ handleSubmit }: TColorForm) {
   const handleBeforeInput: FormEventHandler<HTMLInputElement> = (event) => {
     const value = event.currentTarget.value
     const char = (event as unknown as CompositionEvent).data
-    const valid = ValidHexPattern.test(value + char)
+    const valid = /^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm.test(value + char)
 
     if (!valid) return event.preventDefault()
 
