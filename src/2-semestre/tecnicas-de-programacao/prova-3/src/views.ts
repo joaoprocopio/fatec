@@ -1,11 +1,11 @@
 import { Router } from "express"
 
-import { createCourse } from "~/services"
+import { createCourse, createStudent } from "~/services"
 import { HttpStatus } from "@/http"
 
 export const router = Router()
 
-router.get("/courses/:name/:credit", (req, res) => {
+router.get("/course/:name/:credit", (req, res) => {
   const params = req.params
 
   const course = createCourse({
@@ -13,5 +13,13 @@ router.get("/courses/:name/:credit", (req, res) => {
     credit: parseInt(params.credit)
   })
 
-  res.status(HttpStatus.Ok).send(course.toJSON())
+  return res.status(HttpStatus.Ok).send(course.toJSON())
+})
+
+router.get("/student", (req, res) => {
+  const body = req.body
+
+  const student = createStudent(body)
+
+  return res.status(HttpStatus.Ok).send(student.toJSON())
 })
