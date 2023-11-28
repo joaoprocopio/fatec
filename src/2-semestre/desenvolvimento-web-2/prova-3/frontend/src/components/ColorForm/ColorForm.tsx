@@ -42,6 +42,7 @@ export default function ColorForm({ handleSubmit }: TColorForm) {
         className="cf-input"
         name="red"
         placeholder="Vermelho"
+        defaultValue={color.red}
         onChange={handleChange}
         onBeforeInput={handleBeforeInput}
       />
@@ -49,6 +50,7 @@ export default function ColorForm({ handleSubmit }: TColorForm) {
         className="cf-input"
         name="blue"
         placeholder="Azul"
+        defaultValue={color.blue}
         onChange={handleChange}
         onBeforeInput={handleBeforeInput}
       />
@@ -56,6 +58,7 @@ export default function ColorForm({ handleSubmit }: TColorForm) {
         className="cf-input"
         name="green"
         placeholder="Verde"
+        defaultValue={color.green}
         onChange={handleChange}
         onBeforeInput={handleBeforeInput}
       />
