@@ -54,3 +54,10 @@ INSERT INTO tbl_alunos_cursos (id_aluno, id_curso) VALUES
 (3, 3),
 (4, 4),
 (5, 5);
+
+INSERT INTO tbl_atividades (nome_atividade, data_entrega, id_aluno) VALUES
+('Atividade 1', '2023-12-01', 1),
+('Atividade 2', '2023-12-15', 2),
+('Atividade 3', '2023-12-10', 3),
+('Atividade 4', '2023-12-05', 4),
+('Atividade 5', '2023-11-30', 5);
