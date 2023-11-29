@@ -103,15 +103,8 @@ function updateParticles() {
       checkFloorCollision(i, nextPy)
     }
 
-    if (particles[i]) {
-      // Update the length of the rain drop based on velocity
-      particles[i].length = particles[i].velocity.y * 1.8
-
-      // The negative length gives the bounce effect, but it buggy, so this resets particles when the length is below -20
-      if (particles[i].length <= -20) {
-        particles[i].setParticle()
-      }
-    }
+    // Update the length of the rain drop based on velocity
+    particles[i].length = particles[i].velocity.y * 1.8
 
     if (particles[i] && particles[i].removed) {
       particles.splice(i, 1)
