@@ -7,30 +7,25 @@
  *
  * Ilustre a execução desse sistema para um texto de entrada arbitrário (.txt) fornecido pelo usuário.
  *
- * Não esqueça de converter todos os caracteres para minúsculo e efetuar a remoção de caracteres tais como pontos, etc.
+ * Não esqueça de converter todos os cara`cteres para minúsculo e efetuar a remoção de caracteres tais como pontos, etc.
  */
 
 import Chart from "chart.js/auto"
 
-const chartEl = document.getElementById("chart") as HTMLCanvasElement
+let data: {
+  word: string
+  count: number
+}[] = []
 
-const data = [
-  { year: 2010, count: 10 },
-  { year: 2011, count: 20 },
-  { year: 2012, count: 15 },
-  { year: 2013, count: 25 },
-  { year: 2014, count: 22 },
-  { year: 2015, count: 30 },
-  { year: 2016, count: 28 }
-]
+data = []
 
-const chart = new Chart(chartEl, {
+const chart = new Chart("chart", {
   type: "bar",
   data: {
-    labels: data.map((row) => row.year),
+    labels: data.map((row) => row.word),
     datasets: [
       {
-        label: "Acquisitions by year",
+        label: "Distribuição de Frequência de Palavras",
         data: data.map((row) => row.count)
       }
     ]
