@@ -47,3 +47,10 @@ INSERT INTO tbl_cursos (nome_curso, instrutor) VALUES
 ('Historia', 'Dr. Davis'),
 ('Fisica', 'Prof. Miller'),
 ('Ingles', 'Dr. Wilson');
+
+INSERT INTO tbl_alunos_cursos (id_aluno, id_curso) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
