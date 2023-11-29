@@ -8,11 +8,7 @@ main {
   padding: 16px 32px;
 }
 
-.title {
-  margin-bottom: 32px;
-}
-
-.input {
+.label {
   all: unset;
 
   cursor: pointer;
@@ -20,20 +16,20 @@ main {
   align-items: center;
   justify-content: center;
 
-  border: 1px solid gray;
-  background-color: lightgray;
+  color: #666666;
+  border: 1px solid #e5e5e5;
   border-radius: 4px;
 
   width: 100%;
-  height: 192px;
+  height: 64px;
 
   font-size: 24px;
   font-weight: 500;
 
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
 
-.i-file {
+#input {
   height: 1px;
   width: 1px;
   overflow: hidden;
@@ -45,7 +41,7 @@ main {
   clip-path: inset(50%);
 }
 
-.chart {
+#chart {
   width: 100%;
   height: 100%;
 }
