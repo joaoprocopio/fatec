@@ -12,14 +12,15 @@
 
 import Chart from "chart.js/auto"
 
+const chartEl = document.getElementById("chart") as HTMLCanvasElement
+const inputEl = document.getElementById("input") as HTMLInputElement
+
 let data: {
   word: string
   count: number
 }[] = []
 
-data = []
-
-const chart = new Chart("chart", {
+const chart = new Chart(chartEl, {
   type: "bar",
   data: {
     labels: data.map((row) => row.word),
@@ -31,3 +32,33 @@ const chart = new Chart("chart", {
     ]
   }
 })
+
+inputEl.onchange = async (event) => {
+  const files = (event.target as HTMLInputElement).files
+  const file = files?.item(0)
+
+  if (!file) return
+
+  const text = await file.text()
+
+  const words = text.match(/\p{L}+/gu)
+
+  if (!words) return
+
+  const wordCount = words.reduce(
+    (acc, word) => {
+      acc[word] = (acc[word] || 0) + 1
+
+      return acc
+    },
+    {} as Record<string, number>
+  )
+
+  data = Object.entries(wordCount)
+    .map(([word, count]) => ({ word, count }))
+    .sort((a, b) => b.count - a.count)
+
+  chart.data.labels = data.map((row) => row.word)
+  chart.data.datasets[0].data = data.map((row) => row.count)
+  chart.update()
+}
