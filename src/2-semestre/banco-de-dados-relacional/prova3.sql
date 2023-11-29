@@ -100,3 +100,33 @@ AS $$
   FROM
     tbl_alunos
 $$;
+
+CREATE TABLE tbl_log_atividades (
+  id_log_atividade SERIAL,
+  id_aluno INT,
+  id_atividade INT,
+  nome_atividade TEXT,
+
+  FOREIGN KEY (id_aluno) REFERENCES tbl_alunos(id_aluno),
+  FOREIGN KEY (id_atividade) REFERENCES tbl_atividades(id_atividade)
+);
+
+CREATE OR REPLACE FUNCTION fc_log_mudancas_atividades()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+  BEGIN
+    IF NEW.nome_atividade <> OLD.nome_atividade THEN
+      INSERT INTO tbl_log_atividades (id_aluno, id_atividade, nome_atividade) VALUES
+      (OLD.id_aluno, OLD.id_atividade, OLD.nome_atividade);
+    END IF;
+
+    RETURN NEW;
+  END;
+$$;
+
+CREATE OR REPLACE TRIGGER tr_log_mudancas_atividades
+BEFORE UPDATE ON tbl_atividades
+FOR EACH ROW
+EXECUTE FUNCTION fc_log_mudancas_atividades();
+
