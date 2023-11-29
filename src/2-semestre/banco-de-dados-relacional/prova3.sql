@@ -91,3 +91,12 @@ BEGIN ATOMIC
     id_atividade = _id_atividade;
 END;
 
+CREATE FUNCTION fc_obter_contagem_alunos()
+RETURNS INT
+LANGUAGE SQL
+AS $$
+  SELECT
+    COUNT(*)
+  FROM
+    tbl_alunos
+$$;
