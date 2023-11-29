@@ -15,19 +15,14 @@ import Chart from "chart.js/auto"
 const chartEl = document.getElementById("chart") as HTMLCanvasElement
 const inputEl = document.getElementById("input") as HTMLInputElement
 
-let data: {
-  word: string
-  count: number
-}[] = []
-
 const chart = new Chart(chartEl, {
   type: "bar",
   data: {
-    labels: data.map((row) => row.word),
+    labels: [] as string[],
     datasets: [
       {
         label: "Distribuição de Frequência de Palavras",
-        data: data.map((row) => row.count)
+        data: [] as number[]
       }
     ]
   }
@@ -37,15 +32,16 @@ const preProcess = (text: string) => {
   return text.toLowerCase()
 }
 
-const countWords = (words: string[]) => {
-  return words.reduce(
-    (acc, word) => {
-      acc[word] = (acc[word] || 0) + 1
+const countWords = (words: string[]): Record<string, number> => {
+  const wordsMap = new Map<string, number>()
 
-      return acc
-    },
-    {} as Record<string, number>
-  )
+  words.forEach((word) => {
+    const count = wordsMap.get(word) || 0
+
+    wordsMap.set(word, count + 1)
+  })
+
+  return Object.fromEntries(wordsMap)
 }
 
 inputEl.onchange = async (event) => {
@@ -65,11 +61,12 @@ inputEl.onchange = async (event) => {
 
   const wordCount = countWords(processed)
 
-  data = Object.entries(wordCount)
+  const data = Object.entries(wordCount)
     .map(([word, count]) => ({ word, count }))
     .sort((a, b) => b.count - a.count)
 
   chart.data.labels = data.map((row) => row.word)
   chart.data.datasets[0].data = data.map((row) => row.count)
+
   chart.update()
 }
