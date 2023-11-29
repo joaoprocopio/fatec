@@ -1,3 +1,5 @@
+import path from "path"
+
 const env = process.env
 
 export const settings = {
@@ -9,5 +11,9 @@ export const settings = {
   },
   get EXPRESS_ROOT() {
     return __dirname
+  },
+
+  get DB_PATH() {
+    return path.join(settings.EXPRESS_ROOT, "./db.txt")
   }
 } as const

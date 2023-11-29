@@ -1,3 +1,7 @@
+import fs from "fs"
+
+import { settings } from "~/settings"
+
 export type TModel = {
   id: number
 }
@@ -20,6 +24,8 @@ export class Course implements TCourse {
     this.id = Course.count++
     this.name = name
     this.credit = credit
+
+    DB.append(this.toString())
   }
 
   toJSON() {
@@ -61,5 +67,16 @@ export class Student implements TStudent {
       name: this.name,
       courses: this.courses.map((course) => course.toJSON())
     }
+  }
+}
+
+export class DB {
+  private static path = settings.DB_PATH
+
+  static append(content: string) {
+    const file = fs.readFileSync(this.path, { encoding: "utf-8" })
+    const written = fs.writeFileSync(this.path, file + content + "\n", { encoding: "utf-8" })
+
+    return written
   }
 }
