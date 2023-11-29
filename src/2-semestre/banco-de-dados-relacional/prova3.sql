@@ -40,3 +40,10 @@ INSERT INTO tbl_alunos (primeiro_nome, sobrenome, idade) VALUES
 ('Charlie', 'Brown', 21),
 ('David', 'Miller', 23),
 ('Eva', 'Davis', 22);
+
+INSERT INTO tbl_cursos (nome_curso, instrutor) VALUES
+('Matematica', 'Dr. Johnson'),
+('Ciencia da Computacao', 'Prof. Silva'),
+('Historia', 'Dr. Davis'),
+('Fisica', 'Prof. Miller'),
+('Ingles', 'Dr. Wilson');
