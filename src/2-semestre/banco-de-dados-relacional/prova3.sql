@@ -61,3 +61,21 @@ INSERT INTO tbl_atividades (nome_atividade, data_entrega, id_aluno) VALUES
 ('Atividade 3', '2023-12-10', 3),
 ('Atividade 4', '2023-12-05', 4),
 ('Atividade 5', '2023-11-30', 5);
+
+CREATE VIEW v_alunos_ciencia_computacao AS
+SELECT
+  a.primeiro_nome,
+  a.sobrenome,
+  c.nome_curso
+FROM
+  tbl_alunos AS a
+JOIN
+  tbl_alunos_cursos AS ac
+On
+  a.id_aluno = ac.id_aluno
+JOIN
+  tbl_cursos AS c
+ON
+  ac.id_curso = c.id_curso
+WHERE
+  c.nome_curso = 'Ciencia da Computacao';
