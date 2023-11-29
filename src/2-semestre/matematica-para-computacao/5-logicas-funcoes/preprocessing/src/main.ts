@@ -7,7 +7,7 @@
  *
  * Ilustre a execução desse sistema para um texto de entrada arbitrário (.txt) fornecido pelo usuário.
  *
- * Não esqueça de converter todos os cara`cteres para minúsculo e efetuar a remoção de caracteres tais como pontos, etc.
+ * Não esqueça de converter todos os caracteres para minúsculo e efetuar a remoção de caracteres tais como pontos, etc.
  */
 
 import Chart from "chart.js/auto"
@@ -33,19 +33,12 @@ const chart = new Chart(chartEl, {
   }
 })
 
-inputEl.onchange = async (event) => {
-  const files = (event.target as HTMLInputElement).files
-  const file = files?.item(0)
+const preProcess = (text: string) => {
+  return text.toLowerCase()
+}
 
-  if (!file) return
-
-  const text = await file.text()
-
-  const words = text.match(/\p{L}+/gu)
-
-  if (!words) return
-
-  const wordCount = words.reduce(
+const countWords = (words: string[]) => {
+  return words.reduce(
     (acc, word) => {
       acc[word] = (acc[word] || 0) + 1
 
@@ -53,6 +46,24 @@ inputEl.onchange = async (event) => {
     },
     {} as Record<string, number>
   )
+}
+
+inputEl.onchange = async (event) => {
+  const input = event.target as HTMLInputElement
+  const file = input.files?.item(0)
+
+  input.value = ""
+
+  if (!file) return
+
+  const text = await file.text()
+  const words = text.match(/\p{L}+/gu)
+
+  if (!words) return
+
+  const processed = words.map((word) => preProcess(word))
+
+  const wordCount = countWords(processed)
 
   data = Object.entries(wordCount)
     .map(([word, count]) => ({ word, count }))
