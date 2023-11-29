@@ -33,3 +33,10 @@ CREATE TABLE tbl_atividades (
 
   FOREIGN KEY (id_aluno) REFERENCES tbl_alunos(id_aluno)
 );
+
+INSERT INTO tbl_alunos (primeiro_nome, sobrenome, idade) VALUES
+('Alice', 'Silva', 20),
+('Bod', 'Johnson', 22),
+('Charlie', 'Brown', 21),
+('David', 'Miller', 23),
+('Eva', 'Davis', 22);
