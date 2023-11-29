@@ -79,3 +79,15 @@ ON
   ac.id_curso = c.id_curso
 WHERE
   c.nome_curso = 'Ciencia da Computacao';
+
+CREATE PROCEDURE sp_atribuir_atividade_aluno(_id_atividade INT, _id_aluno INT)
+LANGUAGE SQL
+BEGIN ATOMIC
+  UPDATE
+    tbl_atividades
+  SET
+    id_aluno = _id_aluno
+  WHERE
+    id_atividade = _id_atividade;
+END;
+
