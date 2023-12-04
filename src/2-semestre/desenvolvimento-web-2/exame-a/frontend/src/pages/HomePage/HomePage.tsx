@@ -1,10 +1,12 @@
 import "./HomePage.scss"
 
-import { useColors } from "~/hooks"
+// import { useNames } from "~/hooks"
 import type { TNameForm } from "~/components"
 import { NameForm } from "~/components"
 
 export default function HomePage() {
+  // const { names } = useNames()
+
   const handleSubmit: TNameForm["handleSubmit"] = async (event, name) => {
     event.preventDefault()
 

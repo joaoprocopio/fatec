@@ -1,1 +1,1 @@
-export * from "./ColorsContext"
+export * from "./NamesContext"

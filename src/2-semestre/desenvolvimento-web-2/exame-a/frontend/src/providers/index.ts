@@ -1,2 +1,2 @@
-export { default as ColorsProvider } from "./ColorsProvider"
-export * from "./ColorsProvider"
+export { default as NamesProvider } from "./NamesProvider"
+export * from "./NamesProvider"

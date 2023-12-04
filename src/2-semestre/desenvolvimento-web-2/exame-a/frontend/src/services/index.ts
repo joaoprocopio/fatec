@@ -1,1 +1,1 @@
-export * as ColorsServices from "./colors"
+export * as NamesServices from "./names"

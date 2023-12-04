@@ -1,12 +1,12 @@
 import { RouterProvider } from "react-router-dom"
 
 import { router } from "~/router"
-import { ColorsProvider } from "~/providers"
+import { NamesProvider } from "~/providers"
 
 export default function App() {
   return (
-    <ColorsProvider>
+    <NamesProvider>
       <RouterProvider router={router} />
-    </ColorsProvider>
+    </NamesProvider>
   )
 }
