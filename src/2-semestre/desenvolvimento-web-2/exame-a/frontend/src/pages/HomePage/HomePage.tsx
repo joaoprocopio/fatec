@@ -1,11 +1,11 @@
 import "./HomePage.scss"
 
-// import { useNames } from "~/hooks"
+import { useNames } from "~/hooks"
 import type { TNameForm } from "~/components"
-import { NameForm } from "~/components"
+import { NameForm, NameList } from "~/components"
 
 export default function HomePage() {
-  // const { names } = useNames()
+  const { names } = useNames()
 
   const handleSubmit: TNameForm["handleSubmit"] = async (event, name) => {
     event.preventDefault()
@@ -13,17 +13,7 @@ export default function HomePage() {
     if (!name) return
   }
 
-  // const handleRemove = async (id: number) => {
-  //   await ColorsServices.removeColor(id)
-
-  //   const index = colors.findIndex((color) => color.id === id)
-
-  //   if (!index) return setColors([])
-
-  //   const newColors = colors.splice(index, 1)
-
-  //   setColors(newColors)
-  // }
+  const handleRemove = async (id: number) => {}
 
   return (
     <main className="home-page">
@@ -31,7 +21,7 @@ export default function HomePage() {
 
       <NameForm handleSubmit={handleSubmit} />
 
-      {/* <ColorList colors={colors} handleRemove={handleRemove} /> */}
+      <NameList names={names} handleRemove={handleRemove} />
     </main>
   )
 }

@@ -1,3 +1,3 @@
 export * from "./NameForm"
-export * from "./ColorList"
-export * from "./ColorListItem"
+export * from "./NameList"
+export * from "./NameListItem"

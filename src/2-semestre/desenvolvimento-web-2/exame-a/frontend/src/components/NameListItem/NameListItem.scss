@@ -1,4 +1,4 @@
-.color-list-item {
+.name-list-item {
   all: unset;
   cursor: pointer;
 
@@ -7,11 +7,9 @@
   width: 100%;
   border: 1px solid #707070;
 
-  .cli-text {
+  .nli-text {
     text-align: center;
     font-size: 32px;
     font-weight: 700;
-    mix-blend-mode: difference;
-    filter: invert(1);
   }
 }
