@@ -1,0 +1,29 @@
+.color-form {
+  display: flex;
+  gap: 16px;
+  height: 48px;
+  margin-bottom: 32px;
+
+  .cf-input {
+    all: unset;
+    font-weight: 500;
+    border: 1px solid #707070;
+    color: #707070;
+    border-radius: 4px;
+    padding: 4px 8px;
+    width: 100%;
+  }
+
+  .cf-submit {
+    all: unset;
+    cursor: pointer;
+
+    border-radius: 4px;
+    background-color: #e91e63;
+    color: white;
+    text-align: center;
+    width: 30%;
+    font-weight: 500;
+    padding: 4px 8px;
+  }
+}
