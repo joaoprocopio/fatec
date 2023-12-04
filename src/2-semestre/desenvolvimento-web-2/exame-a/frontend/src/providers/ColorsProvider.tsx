@@ -1,20 +1,9 @@
-import type { Dispatch, ReactNode, SetStateAction } from "react"
-import { createContext, useEffect, useState } from "react"
+import type { ReactNode } from "react"
+import { useEffect, useState } from "react"
 
 import type { TColors } from "~/schemas"
 import { ColorsServices } from "~/services"
-
-const ColorsContextDefaultValues: TColorsContext = {
-  colors: [],
-  setColors: () => {}
-}
-
-export type TColorsContext = {
-  colors: TColors
-  setColors: Dispatch<SetStateAction<TColors>>
-}
-
-export const ColorsContext = createContext<TColorsContext>(ColorsContextDefaultValues)
+import { ColorsContext, ColorsContextDefaultValues } from "~/contexts"
 
 export default function ColorsProvider({ children }: { children: ReactNode }) {
   const [colors, setColors] = useState<TColors>(ColorsContextDefaultValues.colors)
