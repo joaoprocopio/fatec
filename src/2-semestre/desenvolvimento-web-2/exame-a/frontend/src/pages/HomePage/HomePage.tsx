@@ -32,7 +32,7 @@ export default function HomePage() {
 
   return (
     <main className="home-page">
-      <h1 className="hp-title">Colorify</h1>
+      <h1 className="hp-title">Cara-crachá</h1>
 
       <ColorForm handleSubmit={handleSubmit} />
 
