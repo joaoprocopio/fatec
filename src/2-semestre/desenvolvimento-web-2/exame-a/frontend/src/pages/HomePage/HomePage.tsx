@@ -1,42 +1,35 @@
 import "./HomePage.scss"
 
 import { useColors } from "~/hooks"
-import { ColorsServices } from "~/services"
-import type { TColorForm } from "~/components"
-import { ColorForm, ColorList } from "~/components"
+import type { TNameForm } from "~/components"
+import { NameForm } from "~/components"
 
 export default function HomePage() {
-  const { colors, setColors } = useColors()
-
-  const handleSubmit: TColorForm["handleSubmit"] = async (event, color) => {
+  const handleSubmit: TNameForm["handleSubmit"] = async (event, name) => {
     event.preventDefault()
 
-    if (!color) return
-
-    const newColor = await ColorsServices.createColor(color)
-
-    setColors((colors) => [...colors, newColor])
+    if (!name) return
   }
 
-  const handleRemove = async (id: number) => {
-    await ColorsServices.removeColor(id)
+  // const handleRemove = async (id: number) => {
+  //   await ColorsServices.removeColor(id)
 
-    const index = colors.findIndex((color) => color.id === id)
+  //   const index = colors.findIndex((color) => color.id === id)
 
-    if (!index) return setColors([])
+  //   if (!index) return setColors([])
 
-    const newColors = colors.splice(index, 1)
+  //   const newColors = colors.splice(index, 1)
 
-    setColors(newColors)
-  }
+  //   setColors(newColors)
+  // }
 
   return (
     <main className="home-page">
       <h1 className="hp-title">Cara-crachá</h1>
 
-      <ColorForm handleSubmit={handleSubmit} />
+      <NameForm handleSubmit={handleSubmit} />
 
-      <ColorList colors={colors} handleRemove={handleRemove} />
+      {/* <ColorList colors={colors} handleRemove={handleRemove} /> */}
     </main>
   )
 }

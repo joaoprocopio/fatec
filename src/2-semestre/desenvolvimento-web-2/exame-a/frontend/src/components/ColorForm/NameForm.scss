@@ -1,10 +1,10 @@
-.color-form {
+.name-form {
   display: flex;
   gap: 16px;
   height: 48px;
   margin-bottom: 32px;
 
-  .cf-input {
+  .nf-input {
     all: unset;
     font-weight: 500;
     border: 1px solid #707070;
@@ -14,15 +14,15 @@
     width: 100%;
   }
 
-  .cf-submit {
+  .nf-submit {
     all: unset;
     cursor: pointer;
 
     border-radius: 4px;
-    background-color: #e91e63;
+    background-color: #1976d2;
     color: white;
     text-align: center;
-    width: 30%;
+    width: 128px;
     font-weight: 500;
     padding: 4px 8px;
   }

@@ -1,2 +1,2 @@
-export { default as ColorForm } from "./ColorForm"
-export * from "./ColorForm"
+export { default as NameForm } from "./NameForm"
+export * from "./NameForm"
