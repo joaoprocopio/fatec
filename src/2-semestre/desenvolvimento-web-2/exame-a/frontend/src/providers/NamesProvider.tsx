@@ -1,12 +1,13 @@
 import type { ReactNode } from "react"
 import { useEffect, useState } from "react"
 
-import type { TNames } from "~/schemas"
+import type { TBaseName, TNames } from "~/schemas"
 import { NamesServices } from "~/services"
 import { NamesContext, NamesContextDefaultValues } from "~/contexts"
 
 export default function NamesProvider({ children }: { children: ReactNode }) {
   const [names, setNames] = useState<TNames>(NamesContextDefaultValues.names)
+  const [orderBy] = useState<keyof TBaseName>("firstname")
 
   const createName = async (_name: string) => {
     const name = _name.trim().split(" ")
@@ -26,14 +27,14 @@ export default function NamesProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    const getColors = async () => {
-      const names = await NamesServices.getNames()
+    const getNames = async () => {
+      const names = await NamesServices.getNames(orderBy)
 
       setNames(names)
     }
 
-    getColors()
-  }, [names.length])
+    getNames()
+  }, [names.length, orderBy])
 
   return <NamesContext.Provider value={{ names, createName, removeName }}>{children}</NamesContext.Provider>
 }

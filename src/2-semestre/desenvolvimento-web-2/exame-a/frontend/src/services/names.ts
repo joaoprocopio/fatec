@@ -3,7 +3,7 @@ import { HttpClient } from "~/services/clients"
 import type { TBaseName } from "~/schemas"
 import { Name, Names } from "~/schemas"
 
-export const getNames = async (orderBy: keyof TBaseName = "firstname") => {
+export const getNames = async (orderBy: keyof TBaseName) => {
   const response = await HttpClient.get(`/list/${orderBy}`)
 
   return Names.parse(response.data)
