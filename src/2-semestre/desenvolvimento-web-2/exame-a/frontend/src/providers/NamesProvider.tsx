@@ -8,6 +8,23 @@ import { NamesContext, NamesContextDefaultValues } from "~/contexts"
 export default function NamesProvider({ children }: { children: ReactNode }) {
   const [names, setNames] = useState<TNames>(NamesContextDefaultValues.names)
 
+  const createName = async (_name: string) => {
+    const name = _name.trim().split(" ")
+
+    const firstname = name[0]
+    const lastname = name[name.length - 1]
+
+    const createdName = await NamesServices.createName({ firstname, lastname })
+
+    setNames((oldNames) => [...oldNames, createdName])
+  }
+
+  const removeName = async (id: string | number) => {
+    await NamesServices.removeName(id)
+
+    setNames((oldNames) => oldNames.filter((name) => name.id !== id))
+  }
+
   useEffect(() => {
     const getColors = async () => {
       const names = await NamesServices.getNames()
@@ -18,5 +35,5 @@ export default function NamesProvider({ children }: { children: ReactNode }) {
     getColors()
   }, [names.length])
 
-  return <NamesContext.Provider value={{ names }}>{children}</NamesContext.Provider>
+  return <NamesContext.Provider value={{ names, createName, removeName }}>{children}</NamesContext.Provider>
 }
