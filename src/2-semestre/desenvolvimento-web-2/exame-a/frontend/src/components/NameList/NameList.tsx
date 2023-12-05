@@ -1,19 +1,21 @@
 import "./NameList.scss"
 
 import type { TNames } from "~/schemas"
+import type { TNameListItem } from "~/components"
 import { NameListItem } from "~/components"
 
 export type TNameList = {
   names: TNames
-  handleRemove: (id: number) => void
+  handleLeftClick: TNameListItem["handleLeftClick"]
+  handleRightClick: TNameListItem["handleRightClick"]
 }
 
-export default function NameList({ names, handleRemove }: TNameList) {
+export default function NameList({ names, handleLeftClick, handleRightClick }: TNameList) {
   return (
-    <div className="name-list">
+    <ul className="name-list">
       {names.map((name) => (
-        <NameListItem key={name.id} name={name} handleRemove={() => handleRemove(name.id)} />
+        <NameListItem key={name.id} name={name} handleLeftClick={handleLeftClick} handleRightClick={handleRightClick} />
       ))}
-    </div>
+    </ul>
   )
 }

@@ -7,7 +7,7 @@ import { NamesContext, NamesContextDefaultValues } from "~/contexts"
 
 export default function NamesProvider({ children }: { children: ReactNode }) {
   const [names, setNames] = useState<TNames>(NamesContextDefaultValues.names)
-  const [orderBy] = useState<keyof TBaseName>("firstname")
+  const [orderBy, setOrderBy] = useState<keyof TBaseName>("firstname")
 
   const createName = async (_name: string) => {
     const name = _name.trim().split(" ")
@@ -26,6 +26,10 @@ export default function NamesProvider({ children }: { children: ReactNode }) {
     setNames((oldNames) => oldNames.filter((name) => name.id !== id))
   }
 
+  const reorderNames = async (orderBy: keyof TBaseName) => {
+    setOrderBy(orderBy)
+  }
+
   useEffect(() => {
     const getNames = async () => {
       const names = await NamesServices.getNames(orderBy)
@@ -36,5 +40,7 @@ export default function NamesProvider({ children }: { children: ReactNode }) {
     getNames()
   }, [names.length, orderBy])
 
-  return <NamesContext.Provider value={{ names, createName, removeName }}>{children}</NamesContext.Provider>
+  return (
+    <NamesContext.Provider value={{ names, createName, removeName, reorderNames }}>{children}</NamesContext.Provider>
+  )
 }

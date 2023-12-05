@@ -1,16 +1,29 @@
 import "./NameListItem.scss"
 
-import type { TName } from "~/schemas"
+import type { TBaseName, TName } from "~/schemas"
 
 export type TNameListItem = {
   name: TName
-  handleRemove: () => void
+  handleLeftClick: (orderBy: keyof TBaseName) => void
+  handleRightClick: (id: number) => void
 }
 
-export default function NameListItem({ name, handleRemove }: TNameListItem) {
+export default function NameListItem({ name, handleLeftClick, handleRightClick }: TNameListItem) {
   return (
-    <button className="name-list-item" onClick={handleRemove}>
-      {name.firstname} {name.lastname}
-    </button>
+    <li className="name-list-item">
+      <span
+        className="nli-text"
+        onClick={() => handleLeftClick("firstname")}
+        onContextMenu={() => handleRightClick(name.id)}>
+        {name.firstname}
+      </span>
+      <span
+        className="nli-text"
+        onClick={() => handleLeftClick("lastname")}
+        onContextMenu={() => handleRightClick(name.id)}>
+        {" "}
+        {name.lastname}
+      </span>
+    </li>
   )
 }

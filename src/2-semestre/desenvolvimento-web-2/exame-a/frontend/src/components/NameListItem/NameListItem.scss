@@ -1,13 +1,15 @@
 .name-list-item {
+  display: flex;
   all: unset;
   cursor: pointer;
 
   border-radius: 4px;
-  height: 64px;
-  width: 100%;
-  border: 1px solid #707070;
 
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 24px;
+
+  .nli-text {
+    &:hover {
+      color: red;
+    }
+  }
 }

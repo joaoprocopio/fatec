@@ -1,13 +1,14 @@
 import "./HomePage.scss"
 
+import type { TBaseName } from "~/schemas"
 import { useNames } from "~/hooks"
 import type { TNameForm } from "~/components"
 import { NameForm, NameList } from "~/components"
 
 export default function HomePage() {
-  const { names, createName, removeName } = useNames()
+  const { names, createName, removeName, reorderNames } = useNames()
 
-  const handleSubmit: TNameForm["handleSubmit"] = async (event, name) => {
+  const handleSubmit: TNameForm["handleSubmit"] = (event, name) => {
     event.preventDefault()
 
     if (!name) return
@@ -15,8 +16,12 @@ export default function HomePage() {
     createName(name)
   }
 
-  const handleRemove = async (id: number) => {
+  const handleRemove = (id: number) => {
     removeName(id)
+  }
+
+  const handleReorder = (orderBy: keyof TBaseName) => {
+    reorderNames(orderBy)
   }
 
   return (
@@ -25,7 +30,7 @@ export default function HomePage() {
 
       <NameForm handleSubmit={handleSubmit} />
 
-      <NameList names={names} handleRemove={handleRemove} />
+      <NameList names={names} handleLeftClick={handleReorder} handleRightClick={handleRemove} />
     </main>
   )
 }
