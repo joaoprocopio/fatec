@@ -10,7 +10,7 @@ export type TNameListItem = {
 export default function NameListItem({ name, handleRemove }: TNameListItem) {
   return (
     <button className="name-list-item" onClick={handleRemove}>
-      <p className="nli-text">{name.firstname}</p>
+      {name.firstname} {name.lastname}
     </button>
   )
 }
