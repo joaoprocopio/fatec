@@ -17,5 +17,14 @@ services:
       timeout: 5s
       retries: 5
 
+  mongo:
+    image: mongo:7.0.5
+    ports:
+      - 8081:8081
+    restart: on-failure
+    volumes:
+      - mongo:/data/db
+
 volumes:
   postgres:
+  mongo:
