@@ -18,8 +18,6 @@ void loop() {
     digitalWrite(RED_PIN, LOW);
     digitalWrite(YELLOW_PIN, LOW);
     digitalWrite(GREEN_PIN, HIGH);
-
-    is_on = !is_on;
   } else if (!is_on) {
     digitalWrite(RED_PIN, LOW);
     digitalWrite(YELLOW_PIN, HIGH);
@@ -30,9 +28,9 @@ void loop() {
     digitalWrite(RED_PIN, HIGH);
     digitalWrite(YELLOW_PIN, LOW);
     digitalWrite(GREEN_PIN, LOW);
-
-    is_on = !is_on;
   }
+
+  is_on = !is_on;
 
   delay(3000);
 }
