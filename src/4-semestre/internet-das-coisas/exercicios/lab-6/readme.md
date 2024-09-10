@@ -1,4 +1,4 @@
-# laboratório 4
+# laboratório 6
 
 ```c++
 const int ANALOG_PIN = A0;
